@@ -1,7 +1,6 @@
-# FLOPTRAN IV for BASIC1 PET with Cassette Drive
+# FLOPTRAN IV for Original ROM (BASIC1) PET with Cassette Drive
 
 This is Mark Zimmerman's original version from "FLOPTRAN-IV: A Tiny Compiler," BYTE, October 1980, page 196 et al, written to use Tape #1 as the compiled program save/load device.
-i
 
 Two things to keep in mind about just changing the OPEN statement to point to a disk drive: first, the original ROMs have a bug related to LOAD and SAVE with IEEE-488 storage devices, and second, prior to BASIC 4.0, sequential files on disk use CRLF as a default record separator not CR-only as tape files do.  The added LF will confuse the INPUT#1,A in the published loader program.  This can be worked around by either changing all the PRINT#1 statements in the compiler to not emit a LF, or by modifying the input statements on the loader.
 
