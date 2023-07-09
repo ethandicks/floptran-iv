@@ -9,5 +9,18 @@ As described in the Byte article, you load the bare floptran iv program from tap
 Several pre-compiled and saved examples have been provided in $(TOP)/progs/PET-BASIC3.  These happen to use several additional language features that were added after the initial conversion from the original version published in Byte (printing text strings, printing single characters, printing at a variable-defined column, a GET routine, STOP and END, numeric comparision on IF statement (not just is/is not 0).  As a result, these programs will not compile with an unexpanded version of FLOPTRAN, but the binaries will run as is on a machine with the correct ROM version. 
 
 Provided programs:
-  * floptran loader - original tape-only loader program
+  * floptran iv - original compiler modified in 1981 for BASIC3
+  * floptran loader - original tape-only loader program from 1980
   * floptran dloader - updated version with LF filter for disk files
+
+The version of floptran iv from 1981 is likely to not be bug-free.  In particular, FRE(0) probably doesn't point to the best entry point in ROM, INPUT seems to leave zero page in a state that throws a ?SYNTAX ERROR on exiting to BASIC, and the implementation of POKE appears to be incomplete.
+
+Language features added to 1980 published version:
+  * floptran iv
+  ** PRINT "X" for single chars
+  ** REM statement adds one NOP for every non-blank char after REM in source
+  ** END token produces RTS instruction (same as original RETURN token)
+  * floptran dloader
+  ** read SEQ files from disk
+  ** filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
+  ** ask for optional memory offset to not let low-RAM programs clobber loader
