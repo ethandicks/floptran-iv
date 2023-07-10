@@ -10,6 +10,7 @@ Several pre-compiled and saved examples have been provided in $(TOP)/progs/PET-B
 
 Provided programs:
   * floptran iv - original compiler modified in 1981 for BASIC3
+  * floptran iv+ - extended compiler with features I added along the way
   * floptran loader - original tape-only loader program from 1980
   * floptran dloader - updated version with LF filter for disk files
 
@@ -20,7 +21,11 @@ Language features added to 1980 published version:
     * PRINT "X" for single chars
     * REM statement adds one NOP for every non-blank char after REM in source
     * END token produces RTS instruction (same as original RETURN token)
+  * floptran iv+
+    * Added default numeric values to compiler prompts
+    * Integrated floptran dloader after compilation (CONT to load after compile)
   * floptran dloader
     * read SEQ files from disk
     * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
     * ask for optional memory offset to not let low-RAM programs clobber loader
+
