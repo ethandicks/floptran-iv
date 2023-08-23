@@ -101,7 +101,7 @@
 59100 print#1,32:print#1,28:print#1,202
 59160 print#1,32:print#1,205:print#1,253:pc=pc+9:goto59000
 59300 print#1,32:print#1,210:print#1,255:return
-59400 print#1,32:print#1,28:print#1,202:pc=pc+3:goto50260
+59400 print#1,32:print#1,208:print#1,253:pc=pc+3:goto50260
 59500 gosub49100:if(ch=0)or(ch=58)then50260
 59540 if(ch=44)or(ch=59)then59500
 59560 gosub49190:print#1,169:print#1,ch:gosub59300
