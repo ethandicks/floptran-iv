@@ -1,0 +1,78 @@
+BYTE, July 1981, page 134
+
+Changes to FLOPTRAN-IV 
+
+George H Watson Jr, Physics Department 
+University of Delaware, Newark DE 19711 
+
+I thoroughly enjoyed Mark Zimmermann's article on 
+compiled BASIC for the Commodore PET. (See "FLOP- 
+TRAN-IV: A Tiny Compiler," October 1980 BYTE, page 
+196.) His detailed documentation enabled me to translate 
+FLOPTRAN-IV for use with version 3 PET ROMs (read- 
+only memories). I would like to share with BYTE readers 
+the changes needed for this translation. 
+
+• GO% is replaced by G0% in lines 50000, 58760, 58840, 
+and 60080 as shown: 
+
+50000 DIMX,LN%(255),G0%(127,1),ML%(19,1):P=1025:GC=0
+58760 G0%(GC,0)=PC-32766:PRINT#1,0:PRINT#1,0 
+      :PC=PC+3:TL=0
+58840 G0%(GC,1)=TL:GC=GC+1:GOTO50260 
+60080 FORX=0TOGC-1:PRINT#1,G0%(X,0)+32767 
+      :L=G0%(X,1):Z=LN%(L)+32767 
+
+• Change the DATA statements for the ROM subroutines 
+in lines 49600, 49640, and 49680 as follows: 
+
+49600 DATA69,219,216,219,100,219,0,0,91,210,122,210 
+49640 DATA94,222,127,223,246,216,218,222,216,223,223,223 
+49680 DATA40,224,140,224,232,214,115,215,54,215,52,217,30, 
+      218,104,222 
+
+•The pointer to the start of the variables is at hexa- 
+decimal 2A,2B, so the PEEKs in line 58180 must be 
+changed as follows: 
+
+58180 PRINT#1,24:PRINT#1,144:PRINT#1,5:PC=PC+3 
+      :VL=256*PEEK(43)+PEEK(42)+2 
+
+• The BASIC buffer is now in the second page of pro- 
+grammable memory, so lines 59620 thru 59780 should 
+read: 
+
+59620 PRINT#1,157:PRINT#1,32:PRINT#1,2:PRINT#1,232 
+      :PRINT#1,201:PRINT#1,13 
+59660 PRINT#1,208:PRINT#1,245:GOSUB59300 
+59680 PRINT#1,169:PRINT#1,2:PRINT#1,133:PRINT#1,32 
+      :PRINT#1,169:PRINT#1,32 
+59700 PRINT#1,133:PRINT#1,31:PRINT#1,202:PRINT#1,138 
+      :PRINT#1,32:PRINT#1,143 
+59760 PRINT#1,214:PRINT#1,162:PRINT#1,ZL:PRINT#1,160 
+      :PRINT#1,ZH 
+59780 PRINT#1,32:PRINT#1,224:PRINT#1,218:PC=PC+46 
+      :GOTO59500 
+
+• Line 59780 above and lines 49420, 50720, 51520, 55660, 
+and 59080 require changes, as follows, due to other 
+alterations in subroutine locations: 
+
+49420 PRINT#1,32:PRINT#1,174:PRINT#1,218:PC=PC+7 
+      :RETURN 
+50720 PRINT#1,32:PRINT#1,152:PRINT#1,217:PC=PC+3 
+      :GOTO51080 
+51120 PRINT#1,32:PRINT#1,224:PRINT#1,218:PC=PC+7 
+      :GOTO50240 
+55660 PRINT#1,69:PRINT#1,99:PRINT#1,133:PRINT#1,99 
+      :PC=PC+6:GOTO51100 
+59080 GOSUB49190:GOSUB49400:PRINT#1,32:PRINT#1,233 
+      :PRINT#1,220 
+
+In the new ROMs, the array dimensions are limited by 
+the amount of memory available. The number of possible 
+lines in the source file can be increased by changing lines 
+49940, 50000, and 50200, replacing 255 with the number 
+of lines desired. ■ 
+
+

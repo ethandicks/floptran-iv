@@ -11,6 +11,7 @@ Several pre-compiled and saved examples have been provided in $(TOP)/progs/PET-B
 Provided programs:
   * floptran iv - original compiler modified in 1981 for BASIC3
   * floptran iv+ - extended compiler with features I added along the way
+  * floptran iv udel - original compiler with updates applied from George Watson of the University of Delaware, published in BYTE Magazine, July 1981
   * floptran loader - original tape-only loader program from 1980
   * floptran dloader - updated version with LF filter for disk files
   * *.bas - ASCII versions of tokenized programs to aid with tracking changes/additions
