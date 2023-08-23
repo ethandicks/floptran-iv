@@ -93,11 +93,10 @@
 59040 if(ch=44)or(ch=59)then59000
 59050 ifch=34thengosub49100:print#1,169:print#1,ch:gosub59300:pc=pc+5:gosub49100:goto59000
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
-59100 print#1,162:print#1,0:print#1,189:print#1,0:print#1,1
-59120 print#1,240:print#1,6:gosub59300:print#1,232:print#1,208:print#1,245
-59160 print#1,169:print#1,32:gosub59300:pc=pc+21:goto59000
+59100 print#1,32:print#1,28:print#1,202
+59160 print#1,32:print#1,205:print#1,253:pc=pc+9:goto59000
 59300 print#1,32:print#1,210:print#1,255:return
-59400 print#1,169:print#1,13:gosub59300:pc=pc+5:goto50260
+59400 print#1,32:print#1,28:print#1,202:pc=pc+3:goto50260
 59500 gosub49100:if(ch=0)or(ch=58)then50260
 59540 if(ch=44)or(ch=59)then59500
 59560 gosub49190:print#1,169:print#1,ch:gosub59300
