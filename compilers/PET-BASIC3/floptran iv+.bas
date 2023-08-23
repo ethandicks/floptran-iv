@@ -2,7 +2,8 @@
 49100 tp=tp+1:ch=peek(tp):ifch=32then49100
 49120 return
 49190 if(ch>64)and(ch<91)then49300
-49200 print"{down}{down}{down}?syntax error in"li"{up}":goto61000
+49200 print"{down}{down}{down}?syntax error";
+49210 print" in"li"{up}":goto61000
 49300 z=5*(ch-65)+ov:zh=int(z/256):zl=z-256*zh:return
 49400 print#1,160:print#1,zh:print#1,169:print#1,zl
 49420 print#1,32:print#1,174:print#1,218:pc=pc+7:return
@@ -49,7 +50,7 @@
 56540 goto50260
 58000 gosub49100:gosub49190:gosub49100:vl=tp+1:ifch<>178then49200
 58080 gosub49100:if(ch<>58)and(ch<>0)then58080
-58100 iftp-vl>60thenprint"line too long error{up}":goto49200
+58100 iftp-vl>60thenprint"line too long error";:goto49210
 58120 forl=vltotp-1:wl=peek(l):pokexl+l-vl,wl:next
 58160 gosub49000:forl=vltotp-1:pokexl+l-vl,32:next
 58180 print#1,24:print#1,144:print#1,5:pc=pc+3:vl=256*peek(43)+peek(42)+2
