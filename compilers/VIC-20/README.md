@@ -1,6 +1,6 @@
 # Heitronic Tiny BASIC Compiler for VIC-20
 
-This version appears to be an extended version of the 1980 FLOPTRAN IV primarily aimed at the VIC-20 (but with a commented place to mod to cross-compile on the PET).  It emits the usual byte stream for readback by the included Object Loader, and can optionally print source listings to an attached printer (device #4).  Even though it's clearly derivative of Mark Zimmerman's work, Vic Compiler prints:
+This version appears to be an extended version of the 1980 FLOPTRAN IV primarily aimed at the VIC-20 (but with a commented place to mod to cross-compile on the PET).  It emits the usual byte stream for readback by the included Object Loader, and can optionally print source listings to an attached printer (device #4).  Even though it's clearly derivative of Mark Zimmermann's work, Vic Compiler prints:
 
 TINY BASIC COMPILER
 
