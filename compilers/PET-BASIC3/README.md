@@ -23,6 +23,9 @@ Language features added to 1980 published version:
     * END token produces RTS instruction (same as original RETURN token)
   * floptran iv+
     * Added default numeric values to compiler prompts
+      * 16384/$4000 for code (useful on 32K machines)
+      *   826/$033A for variables (second cassette buffer)
+      *     0/$0000 for loading offset (to POKE binaries to hi-mem to later move down to 1039/$040F)
     * Integrated floptran dloader after compilation (CONT to load after compile)
   * floptran dloader
     * read SEQ files from disk
