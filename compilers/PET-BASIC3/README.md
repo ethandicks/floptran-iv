@@ -13,7 +13,7 @@ Provided programs:
   * floptran iv+ - extended compiler with features I added along the way
   * floptran loader - original tape-only loader program from 1980
   * floptran dloader - updated version with LF filter for disk files
-
+  * *.bas - ASCII versions of tokenized programs to aid with tracking changes/additions
 The version of floptran iv from 1981 is likely to not be bug-free.  In particular, FRE(0) probably doesn't point to the best entry point in ROM, INPUT seems to leave zero page in a state that throws a ?SYNTAX ERROR on exiting to BASIC, and the implementation of POKE appears to be incomplete.
 
 Language features added to 1980 published version:
