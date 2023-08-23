@@ -46,6 +46,10 @@ Language features added to 1980 published version:
       * IF A<B GOTO (compare two variables, take the branch when A < B) *NEW*
       * IF A>B GOTO (compare two variables, take the branch when A > B) *NEW*
       * IF A=B GOTO (compare two variables, take the branch when A = B) *NEW*
+    * Expanded program termination statement options
+      * RETURN (emits RTS, original implementation)
+      * STOP (emits BRK) *NEW*
+      * END (emits JMP $C389, BASIC warmstart) *NEW*
   * floptran dloader
     * read SEQ files from disk
     * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
