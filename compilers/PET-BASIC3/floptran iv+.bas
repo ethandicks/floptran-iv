@@ -106,7 +106,7 @@
 63000 rem attached loader
 63005 if c$=""theninput"file name";c$
 63010 open1,8,2,c$+",s,r":input#1,a$:pc=val(a$):print"begin at "pc
-63012 stop
+63012 ifpc=0thenprint"?bad read, st=";st:close1:end
 63020 input#1,a$:a=val(mid$(a$,2)):ifa>=0thenpokepc,a:pc=pc+1:goto63020
 63030 print"end at"pc-1
 63040 input#1,a$:pc=val(mid$(a$,2)):ifpc<0thenclose1:end
