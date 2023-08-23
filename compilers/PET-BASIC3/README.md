@@ -34,11 +34,11 @@ Language features added to 1980 published version:
     * PRINT supports more formats than just floating point variable output
       * PRINT A (original implementation of PRINT)
       * PRINT "X" (single character)
+      * PRINT "XYZ" (multiple characters) *NEW*
       * PRINT A; (trailing semi-colon/comma: do not print CR at the end) *NEW*
       * PRINT TAB(A) (move printing position right to column A) *NEW*
       * PRINT SPC(A) (move printing position right by A chars) *NEW*
       * PRINT CHR$(A) (print character value 'A') *NEW*
-
   * floptran dloader
     * read SEQ files from disk
     * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)

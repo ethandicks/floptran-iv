@@ -48,7 +48,14 @@
 51100 gosub59990:wl=94:wh=0:gosub59900:goto50240
 52000 a=0:ifpeek(tp+2)<>34then52020
 52010 gosub49130:print#1,169:print#1,ch:gosub59300:pc=pc+5:gosub49100:goto59000
-52020 rem placeholder for long strings
+52020 zh=int((pc+7)/256):zl=(pc+7)-256*zh:tp=tp+1
+52030 print#1,169:print#1,zl:print#1,160:print#1,zh
+52040 print#1,24:print#1,144
+52045 ifpeek(tp+a)<>34thena=a+1:goto52045
+52046 print#1,a+1
+52050 ch=peek(tp):ifch<>34thenprint#1,ch:tp=tp+1:goto52050
+52060 print#1,0
+52070 print#1,32:print#1,28:print#1,202:pc=pc+a+11
 52080 goto59000
 53000 a$=""
 53005 gosub49100:ifch<>58andch<>0thena$=a$+chr$(ch):goto53005
