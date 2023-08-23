@@ -6,16 +6,17 @@ One thing to keep in mind about just changing the OPEN statement to point to a d
 
 As described in the Byte article, you load the bare floptran iv program from tape, prepend your code to be compiled (with line numbers under 49000) then RUN 50000 and answer the prompts.  After successful compilation, load floptran loader, position your tape from the compilation step, then RUN and answer the prompt to choose the memory address to load the data file into.  Start the program with SYS nnnnnn, where nnnnnn is the address you provided to the loader program.  Upgrade ROMs have a built-in machine language monitor, so it's fairly easy to load the compiled program into a handy offset in RAM, say, $140F, then move the program down to 1039 ($040F) and have just the 10 SYS(1039) BASIC shim waiting, and then use the machine language monitor save to tape (or disk) everything from $0401 to the end of your compiled program.
 
-Several pre-compiled and saved examples have been provided in $(TOP)/progs/PET-BASIC3.  These happen to use several additional language features that were added after the initial conversion from the original version published in Byte (printing text strings, printing single characters, printing at a variable-defined column, a GET routine, STOP and END, numeric comparision on IF statement (not just is/is not 0).  As a result, these programs will not compile with an unexpanded version of FLOPTRAN, but the binaries will run as is on a machine with the correct ROM version. 
+Several pre-compiled and saved examples have been provided in $(TOP)/progs/PET-BASIC3.  These happen to use several additional language features that were added after the initial conversion from the original version published in Byte (printing text strings, printing single characters, printing at a variable-defined column, a GET routine, STOP and END, numeric comparision on IF statement (not just is/is not 0).  As a result, these programs will not compile with an unexpanded version of FLOPTRAN, but the binaries will run as is on a machine with the correct ROM version.
 
 Provided programs:
-  * floptran iv - original compiler modified in 1981 for BASIC3
+  * floptran iv - original compiler modified by me in 1981 for BASIC3
   * floptran iv+ - extended compiler with features I added along the way
-  * floptran iv udel - original compiler with updates applied from George Watson of the University of Delaware, published in BYTE Magazine, July 1981
+  * floptran iv udel - original compiler with updates applied from George Watson Jr of the University of Delaware, published in BYTE Magazine, July 1981
   * floptran loader - original tape-only loader program from 1980
   * floptran dloader - updated version with LF filter for disk files
   * *.bas - ASCII versions of tokenized programs to aid with tracking changes/additions
-The version of floptran iv from 1981 is likely to not be bug-free.  In particular, FRE(0) probably doesn't point to the best entry point in ROM, INPUT seems to leave zero page in a state that throws a ?SYNTAX ERROR on exiting to BASIC, and the implementation of POKE appears to be incomplete.
+
+My version of floptran iv from 1981 is likely to not be bug-free.  In particular, FRE(0) probably doesn't point to the best entry point in ROM, INPUT seems to leave zero page in a state that throws a ?SYNTAX ERROR on exiting to BASIC, and the implementation of POKE appears to be incomplete.
 
 Language features added to 1980 published version:
   * floptran iv
