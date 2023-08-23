@@ -1,6 +1,7 @@
 49000 x=                                                                     :return
 49100 tp=tp+1:ch=peek(tp):ifch=32then49100
 49120 return
+49130 tp=tp+1:ch=peek(tp):return
 49190 if(ch>64)and(ch<91)then49300
 49200 print"{down}{down}{down}?syntax error";
 49210 print" in"li"{up}":goto61000
@@ -45,6 +46,10 @@
 51060 gosub49100:ifch<>41then49200
 51080 gosub59970:print#1,32:print#1,ml%(fu,0):print#1,ml%(fu,1):pc=pc+3
 51100 gosub59990:wl=94:wh=0:gosub59900:goto50240
+52000 a=0:ifpeek(tp+2)<>34then52020
+52010 gosub49130:print#1,169:print#1,ch:gosub59300:pc=pc+5:gosub49100:goto59000
+52020 rem placeholder for long strings
+52080 goto59000
 53000 a$=""
 53005 gosub49100:ifch<>58andch<>0thena$=a$+chr$(ch):goto53005
 53010 forx=1tolen(a$):ifmid$(a$,x,1)<>","thennext
@@ -92,6 +97,7 @@
 59000 gosub49100:if(ch=0)or(ch=58)then59400
 59040 if(ch=44)or(ch=59)then59000
 59050 ifch=34thengosub49100:print#1,169:print#1,ch:gosub59300:pc=pc+5:gosub49100:goto59000
+59050 ifch=34thengoto52000
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
 59100 print#1,32:print#1,28:print#1,202
 59160 print#1,32:print#1,205:print#1,253:pc=pc+9:goto59000
