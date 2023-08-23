@@ -40,6 +40,12 @@ Language features added to 1980 published version:
       * PRINT SPC(A) (move printing position right by A chars) *NEW*
       * PRINT CHR$(A) (print character value 'A') *NEW*
     * REM now adds one NOP ($EA) for each '-' and accepts hex digit pairs to emit raw bytes. Other chars are ignored *NEW*
+    * IF now supports multiple expression types (not just "IF A GOTO/GOSUB")
+      * IF A GOTO (same as before)
+      * IF NOT A GOTO (NOT inverts the sense of the test, it is not a logical operation) *NEW*
+      * IF A<B GOTO (compare two variables, take the branch when A < B) *NEW*
+      * IF A>B GOTO (compare two variables, take the branch when A > B) *NEW*
+      * IF A=B GOTO (compare two variables, take the branch when A = B) *NEW*
   * floptran dloader
     * read SEQ files from disk
     * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
