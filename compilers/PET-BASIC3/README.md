@@ -39,6 +39,7 @@ Language features added to 1980 published version:
       * PRINT TAB(A) (move printing position right to column A) *NEW*
       * PRINT SPC(A) (move printing position right by A chars) *NEW*
       * PRINT CHR$(A) (print character value 'A') *NEW*
+    * REM now adds one NOP ($EA) for each '-' and accepts hex digit pairs to emit raw bytes. Other chars are ignored *NEW*
   * floptran dloader
     * read SEQ files from disk
     * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)

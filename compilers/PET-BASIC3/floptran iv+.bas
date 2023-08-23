@@ -92,8 +92,12 @@
 54220 print#1,32:print#1,210:print#1,255:pc=pc+8:gosub49100:ifch<>41then49200
 54230 goto59000
 55600 gosub49100:gosub49190:gosub49400:gosub59950:goto51100
-56500 gosub49100:ifch>0thenprint#1,234:pc=pc+1:goto56500
-56540 goto50260
+56500 gosub49100:ifch=45thenprint#1,234:pc=pc+1:goto56500
+56510 ifch=0then50260
+56520 if(ch<48)or(ch>70)or(ch>57andch<65)then56500
+56530 x=(ch-48)+7*(ch>64):gosub49100:ifch=0then49200
+56540 if(ch<48)or(ch>70)or(ch>57andch<65)then49200
+56550 x=x*16+(ch-48)+7*(ch>64):print#1,x:pc=pc+1:goto56500
 58000 gosub49100:gosub49190:gosub49100:vl=tp+1:ifch<>178then49200
 58080 gosub49100:if(ch<>58)and(ch<>0)then58080
 58100 iftp-vl>60thenprint"line too long error";:goto49210
