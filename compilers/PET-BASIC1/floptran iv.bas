@@ -1,4 +1,4 @@
-26628 sinx=                                                                     :return
+49000 x=                                                                     :return
 49100 tp=tp+1:ch=peek(tp):ifch=32then49100
 49120 return
 49190 if(ch>64)and(ch<91)then49300
