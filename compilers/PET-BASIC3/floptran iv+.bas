@@ -78,7 +78,12 @@
 54005 print#1,32:print#1,210:print#1,214
 54010 print#1,165:print#1,17:ifxthenprint#1,24:print#1,101:print#1,198:pc=pc+3
 54020 print#1,133:print#1,198:pc=pc+7:gosub49100:ifch<>41then49200
-54030 goto 59000
+54030 goto59000
+54200 gosub49100:ifch<>40then49200
+54205 gosub49100:gosub49190:gosub49400
+54210 print#1,32:print#1,210:print#1,214:print#1,165:print#1,17
+54220 print#1,32:print#1,210:print#1,255:pc=pc+8:gosub49100:ifch<>41then49200
+54230 goto59000
 55600 gosub49100:gosub49190:gosub49400:gosub59950:goto51100
 56500 gosub49100:ifch>0thenprint#1,234:pc=pc+1:goto56500
 56540 goto50260
@@ -105,6 +110,7 @@
 59047 goto59000
 59050 ifch=34thengoto52000
 59060 if(ch=163)or(ch=166)then54000
+59070 ifch=199then54200
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
 59100 print#1,32:print#1,28:print#1,202
 59160 print#1,32:print#1,205:print#1,253:pc=pc+9:goto59000
