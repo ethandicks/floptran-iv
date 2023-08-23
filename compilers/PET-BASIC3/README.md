@@ -29,6 +29,7 @@ Language features added to 1980 published version:
       * 826/$033A for variables (second cassette buffer)
       * 0/$0000 for loading offset (to POKE binaries to hi-mem to later move down to 1039/$040F)
     * Integrated floptran dloader after compilation (CONT to load after compile)
+    * POKE with constant or numeric variable arguments
   * floptran dloader
     * read SEQ files from disk
     * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
