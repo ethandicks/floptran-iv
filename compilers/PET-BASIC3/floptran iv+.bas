@@ -95,7 +95,9 @@
 58820 tl=10*tl+ch-48:goto58800
 58840 g%(gc,1)=tl:gc=gc+1:goto50260
 59000 gosub49100:if(ch=0)or(ch=58)then59400
-59040 if(ch=44)or(ch=59)then59000
+59040 if(ch<>44)and(ch<>59)then59050
+59045 nc=peek(tp+1):if(nc=0)or(nc=58)thengosub49100:goto50260
+59047 goto59000
 59050 ifch=34thengoto52000
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
 59100 print#1,32:print#1,28:print#1,202

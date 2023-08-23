@@ -30,6 +30,11 @@ Language features added to 1980 published version:
       * 0/$0000 for loading offset (to POKE binaries to hi-mem to later move down to 1039/$040F)
     * Integrated floptran dloader after compilation (CONT to load after compile)
     * POKE with constant or numeric variable arguments
+    * PRINT of floating point variables refactored to use more in-ROM routines
+    * PRINT supports more formats than just floating point variable output
+      * PRINT A (original implementation of PRINT)
+      * PRINT "X" (single character)
+      * PRINT A; (trailing semi-colon/comma: do not print CR at the end) *NEW*
   * floptran dloader
     * read SEQ files from disk
     * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
