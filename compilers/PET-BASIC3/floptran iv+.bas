@@ -74,6 +74,11 @@
 53715 print#1,165:print#1,97:print#1,133:print#1,99
 53719 print#1,165:print#1,15
 53720 print#1,160:print#1,0:print#1,145:print#1,98:pc=pc+13:ch=peek(tp):goto50260
+54000 x=(ch=166):gosub49100:gosub49190:gosub49400
+54005 print#1,32:print#1,210:print#1,214
+54010 print#1,165:print#1,17:ifxthenprint#1,24:print#1,101:print#1,198:pc=pc+3
+54020 print#1,133:print#1,198:pc=pc+7:gosub49100:ifch<>41then49200
+54030 goto 59000
 55600 gosub49100:gosub49190:gosub49400:gosub59950:goto51100
 56500 gosub49100:ifch>0thenprint#1,234:pc=pc+1:goto56500
 56540 goto50260
@@ -99,6 +104,7 @@
 59045 nc=peek(tp+1):if(nc=0)or(nc=58)thengosub49100:goto50260
 59047 goto59000
 59050 ifch=34thengoto52000
+59060 if(ch=163)or(ch=166)then54000
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
 59100 print#1,32:print#1,28:print#1,202
 59160 print#1,32:print#1,205:print#1,253:pc=pc+9:goto59000
