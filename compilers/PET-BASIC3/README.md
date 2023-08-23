@@ -17,10 +17,10 @@ The version of floptran iv from 1981 is likely to not be bug-free.  In particula
 
 Language features added to 1980 published version:
   * floptran iv
-  ** PRINT "X" for single chars
-  ** REM statement adds one NOP for every non-blank char after REM in source
-  ** END token produces RTS instruction (same as original RETURN token)
+    * PRINT "X" for single chars
+    * REM statement adds one NOP for every non-blank char after REM in source
+    * END token produces RTS instruction (same as original RETURN token)
   * floptran dloader
-  ** read SEQ files from disk
-  ** filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
-  ** ask for optional memory offset to not let low-RAM programs clobber loader
+    * read SEQ files from disk
+    * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
+    * ask for optional memory offset to not let low-RAM programs clobber loader
