@@ -96,7 +96,6 @@
 58840 g%(gc,1)=tl:gc=gc+1:goto50260
 59000 gosub49100:if(ch=0)or(ch=58)then59400
 59040 if(ch=44)or(ch=59)then59000
-59050 ifch=34thengosub49100:print#1,169:print#1,ch:gosub59300:pc=pc+5:gosub49100:goto59000
 59050 ifch=34thengoto52000
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
 59100 print#1,32:print#1,28:print#1,202
