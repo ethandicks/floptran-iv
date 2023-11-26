@@ -12,8 +12,10 @@
 49640 data94,222,127,223,246,216,218,222,216,223,223,223
 49680 data40,224,140,224,232,214,118,215,54,215,60,217,30,218,104,222
 49720 forx=0to19:readml%(x,0),ml%(x,1):next
+49730 ifw0=0thenml%(15,0)=ml%(15,0)-3:ml%(17,0)=ml%(17,0)-8
 49740 forx=0to255:ln%(x)=-32767:next:return
 50000 x=0:dimln%(255),g%(127,1),ml%(19,1):p=1025:gc=0
+50002 w0= 0:rem old/new math method
 50040 l=peek(p+2)+256*peek(p+3):ifl<>49000thenp=peek(p)+256*peek(p+1):goto50040
 50100 xl=p+6:gosub49600:input"compiled file name";c$:open1,8,2,c$+",s,w"
 50120 print"origin for code? 16384{left}{left}{left}{left}{left}{left}{left}";:inputoc:print#1,oc:pc=oc
@@ -42,6 +44,7 @@
 50560 if(ch<170)or(ch>174)then49200
 50580 fu=ch-155:gosub49100:gosub49190:gosub49400
 50660 print#1,169:print#1,wl:print#1,160:print#1,wh:pc=pc+4
+50700 if (fu=15)or(fu=17)andnotw0then51080
 50720 print#1,32:print#1,152:print#1,217:pc=pc+3:goto51080
 51000 fu=ch-180:gosub49100:ifch<>40then49200
 51040 gosub49100:gosub49190:gosub49400
