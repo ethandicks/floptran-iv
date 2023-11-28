@@ -51,6 +51,8 @@ Language features added to 1980 published version:
       * RETURN (emits RTS, original implementation)
       * STOP (emits BRK) *NEW*
       * END (emits JMP $C389, BASIC warmstart) *NEW*
+    * GET a single character
+      * GET A returns ASCII value into A ($00 if no keypress waiting in keyboard buffer)
     * Added internal flag variable 'w0' to select between two add/mult entry points to recreate historical output binaries
 
   * floptran dloader

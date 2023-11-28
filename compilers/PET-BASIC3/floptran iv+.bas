@@ -27,6 +27,7 @@
 50280 ifch=58then50240
 50300 ifch=136then58000
 50320 ifch=153then59000
+50330 ifch=161then54100
 50340 ifch=133then59500
 50360 ifch=139then58500
 50370 ifch=151then53000
@@ -92,6 +93,8 @@
 54010 print#1,165:print#1,17:ifxthenprint#1,24:print#1,101:print#1,198:pc=pc+3
 54020 print#1,133:print#1,198:pc=pc+7:gosub49100:ifch<>41then49200
 54030 goto59000
+54100 print#1,32:print#1,228:print#1,255:print#1,168:print#1,169:print#1,0
+54120 print#1,32:print#1,109:print#1,210:pc=pc+9:gosub49100:gosub49190:vh=zh:vl=zl:goto51100
 54200 gosub49100:ifch<>40then49200
 54205 gosub49100:gosub49190:gosub49400
 54210 print#1,32:print#1,210:print#1,214:print#1,165:print#1,17
