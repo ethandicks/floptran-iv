@@ -13,13 +13,32 @@
 49680 data40,224,140,224,232,214,118,215,54,215,60,217,30,218,104,222
 49720 forx=0to19:readml%(x,0),ml%(x,1):next
 49730 ifw0=0thenml%(15,0)=ml%(15,0)-3:ml%(17,0)=ml%(17,0)-8
-49740 forx=0to255:ln%(x)=-32767:next:return
-50000 x=0:dimln%(255),g%(127,1),ml%(19,1):p=1025:gc=0
+49740 return
+50000 x=0:dimml%(19,1),vt%(25),sr%(25):p=1025:gc=0
 50002 w0= 0:rem old/new math method
 50040 l=peek(p+2)+256*peek(p+3):ifl<>49000thenp=peek(p)+256*peek(p+1):goto50040
 50100 xl=p+6:gosub49600:input"compiled file name";c$:open1,8,2,c$+",s,w"
 50120 print"origin for code? 16384{left}{left}{left}{left}{left}{left}{left}";:inputoc:print#1,oc:pc=oc
 50140 print"variable table origin? 826{left}{left}{left}{left}{left}";:inputov:tp=1028
+50141 print"max. string size  15{left}{left}{left}{left}";:inputss
+50145 x=ov:cn=ss:q=0:print"{down}variables used:";
+50150 li=peek(tp-1)+256*peek(tp):ifli=49000thentp=1028:oe=x:goto50190
+50160 gosub49100:ifch=0thentp=tp+4:goto50150
+50162 ifli<49000thenlm=li
+50163 ifch=145thengc=gc+10
+50167 ifch=34thenq=1-q
+50168 ifch=137orch=141thengc=gc+1
+50170 ifch>90orch<65orq=1then50160
+50172 ifpeek(tp+1)<>36then50178
+50173 tp=tp+1:ifsr%(ch-65)then50160
+50174 sr%(ch-65)=cn:cn=cn+ss+1:printchr$(ch)"$";:goto50160
+50178 ifvt%(ch-65)then50160
+50180 printchr$(ch);:vt%(ch-65)=x:x=x+5:goto50160
+50190 ifx=ovandcn=ssthenprint"none";
+50191 fori=0to25:ifsr%(i)thensr%(i)=sr%(i)+x-ss
+50192 next
+50193 print:print"{down}  first pass finished{down}":dimln%(lm):ifgc>0thendimg%(gc-1,1):gc=0
+50194 forx=0tolm:ln%(x)=-32767:next
 50200 li=peek(tp-1)+256*peek(tp):ifli>255then60000
 50220 ln%(li)=pc-32767:print"compiling line"li"{up}"
 50240 gosub49100
