@@ -5,7 +5,7 @@
 49190 if(ch>64)and(ch<91)then49300
 49200 print"{down}{down}{down}?syntax error";
 49210 print" in"li"{up}":goto61000
-49300 z=5*(ch-65)+ov:zh=int(z/256):zl=z-256*zh:return
+49300 vb=ch-65:z=vt%(vb):zh=int(z/256):zl=z-256*zh:return
 49400 print#1,160:print#1,zh:print#1,169:print#1,zl
 49420 print#1,32:print#1,174:print#1,218:pc=pc+7:return
 49600 data69,219,216,219,100,219,0,0,89,210,122,210

@@ -54,7 +54,11 @@ Language features added to 1980 published version:
     * GET a single character
       * GET A returns ASCII value into A ($00 if no keypress waiting in keyboard buffer)
     * Added internal flag variable 'w0' to select between two add/mult entry points to recreate historical output binaries
-
+    * Added first-pass scan through BASIC code to identify variables used and max line number
+    * Variables addresses are now dynamic
+      * Assigned in order of appearance in the code
+      * Addresses are adjacent in memory not spaced out by alphabetic value by name
+      * Fixed-length string variables start immediately after numeric variables
   * floptran dloader
     * read SEQ files from disk
     * filter LF out of disk-based SEQ files (pre-BASIC4.0 file format)
