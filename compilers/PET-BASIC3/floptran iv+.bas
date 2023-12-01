@@ -61,7 +61,7 @@
 50430 ifch=144thenprint#1,0:goto50240
 50440 gosub49190:vl=zl:vh=zh
 50460 gosub49100:ifch=36thentp=tp-1:goto57200
-40470 ifch<>178then49200
+50470 ifch<>178then49200
 50480 gosub49100:if(ch>179)and(ch<195)then51000
 50500 ifch=171then55600
 50520 gosub49190:wl=zl:wh=zh
