@@ -6,6 +6,10 @@
 49200 print"{down}{down}{down}?syntax error";
 49210 print" in"li"{up}":goto61000
 49300 vb=ch-65:z=vt%(vb):zh=int(z/256):zl=z-256*zh:return
+49310 gosub49100:gosub49190
+49320 z=sr%(vb):zh=int(z/256):zl=z-256*zh
+49330 gosub49100:ifch<>36then49200
+49340 return
 49400 print#1,160:print#1,zh:print#1,169:print#1,zl
 49420 print#1,32:print#1,174:print#1,218:pc=pc+7:return
 49600 data69,219,216,219,100,219,0,0,89,210,122,210
@@ -56,7 +60,8 @@
 50425 ifch=128thenprint#1,76:print#1,137:print#1,195:pc=pc+3:goto50240
 50430 ifch=144thenprint#1,0:goto50240
 50440 gosub49190:vl=zl:vh=zh
-50460 gosub49100:ifch<>178then49200
+50460 gosub49100:ifch=36thentp=tp-1:goto57200
+40470 ifch<>178then49200
 50480 gosub49100:if(ch>179)and(ch<195)then51000
 50500 ifch=171then55600
 50520 gosub49190:wl=zl:wh=zh
@@ -126,7 +131,18 @@
 56530 x=(ch-48)+7*(ch>64):gosub49100:ifch=0then49200
 56540 if(ch<48)or(ch>70)or(ch>57andch<65)then49200
 56550 x=x*16+(ch-48)+7*(ch>64):print#1,x:pc=pc+1:goto56500
-58000 gosub49100:gosub49190:gosub49100:vl=tp+1:ifch<>178then49200
+57000 gosub49320
+57010 gosub49100:ifch<>178then49200
+57020 gosub49100:ifch<>34then49200
+57030 print#1,24:print#1,144:print#1,ss+1:pc=pc+3
+57035 wh=int(pc/256):wl=pc-256*wh
+57040 fori=0toss:gosub49130:ifch<>34thenprint#1,ch:next
+57050 gosub49100:forj=itoss:print#1,0:next
+57100 print#1,162:print#1,ss:print#1,189:print#1,wl:print#1,wh
+57110 print#1,157:print#1,zl:print#1,zh:print#1,202
+57120 print#1,16:print#1,247:pc=pc+11+ss:goto50260
+58000 gosub49100:gosub49190:gosub49100:vl=tp+1:ifch=36thentp=tp-1:goto57000
+58020 ifch<>178then49200
 58080 gosub49100:if(ch<>58)and(ch<>0)then58080
 58100 iftp-vl>60thenprint"line too long error";:goto49210
 58120 forl=vltotp-1:wl=peek(l):pokexl+l-vl,wl:next
@@ -162,6 +178,7 @@
 59050 ifch=34thengoto52000
 59060 if(ch=163)or(ch=166)then54000
 59070 ifch=199then54200
+59075 ifpeek(tp+1)=36then59350
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
 59100 print#1,32:print#1,28:print#1,202
 59160 print#1,32:print#1,205:print#1,253:pc=pc+9:goto59000

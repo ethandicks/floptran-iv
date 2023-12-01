@@ -30,6 +30,10 @@ Language features added to 1980 published version:
       * 0/$0000 for loading offset (to POKE binaries to hi-mem to later move down to 1039/$040F)
     * Integrated floptran dloader after compilation (CONT to load after compile)
     * Integrated binary writer after loader/dloader (CONT to write to disk after previous dloader)
+    * String variables
+      * Fixed allocation string storage space begins after numeric variable storage
+      * Max string length set in initial dialog
+      * LET A$="AAA"
     * POKE with constant or numeric variable arguments
     * PRINT of floating point variables refactored to use more in-ROM routines
     * PRINT supports more formats than just floating point variable output
