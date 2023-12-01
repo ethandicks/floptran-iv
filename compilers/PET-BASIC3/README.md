@@ -34,6 +34,7 @@ Language features added to 1980 published version:
       * Fixed allocation string storage space begins after numeric variable storage
       * Max string length set in initial dialog
       * LET A$="AAA"
+      * PRINT A$
     * POKE with constant or numeric variable arguments
     * PRINT of floating point variables refactored to use more in-ROM routines
     * PRINT supports more formats than just floating point variable output
@@ -44,6 +45,7 @@ Language features added to 1980 published version:
       * PRINT TAB(A) (move printing position right to column A) *NEW*
       * PRINT SPC(A) (move printing position right by A chars) *NEW*
       * PRINT CHR$(A) (print character value 'A') *NEW*
+      * PRINT A$ (print string variable A$) *NEW*
     * REM now adds one NOP ($EA) for each '-' and accepts hex digit pairs to emit raw bytes. Other chars are ignored *NEW*
     * IF now supports multiple expression types (not just "IF A GOTO/GOSUB")
       * IF A GOTO (same as before)

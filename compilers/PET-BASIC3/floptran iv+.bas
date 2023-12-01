@@ -183,6 +183,9 @@
 59100 print#1,32:print#1,28:print#1,202
 59160 print#1,32:print#1,205:print#1,253:pc=pc+9:goto59000
 59300 print#1,32:print#1,210:print#1,255:return
+59350 vb=ch-65:gosub49320
+59360 print#1,160:print#1,zh:print#1,169:print#1,zl
+59370 print#1,32:print#1,28:print#1,202:pc=pc+7:goto59000
 59400 print#1,32:print#1,208:print#1,253:pc=pc+3:goto50260
 59500 gosub49100:if(ch=0)or(ch=58)then50260
 59540 if(ch=44)or(ch=59)then59500
