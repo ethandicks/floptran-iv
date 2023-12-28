@@ -18,6 +18,8 @@ Provided programs:
 
 My version of floptran iv from 1981 is likely to not be bug-free.  In particular, FRE(0) probably doesn't point to the best entry point in ROM, INPUT seems to leave zero page in a state that throws a ?SYNTAX ERROR on exiting to BASIC, and the implementation of POKE appears to be incomplete.
 
+The original BYTE version and the 1981 simple update will run on an 8K machine.  The features added in 1982 (especially extended PRINT support and string variables) push the minimum RAM requirement to 16K.
+
 Language features added to 1980 published version:
   * floptran iv
     * PRINT "X" for single chars
