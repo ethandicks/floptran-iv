@@ -140,7 +140,7 @@
 57050 gosub49100:forj=itoss:print#1,0:next
 57100 print#1,162:print#1,ss:print#1,189:print#1,wl:print#1,wh
 57110 print#1,157:print#1,zl:print#1,zh:print#1,202
-57120 print#1,16:print#1,247:pc=pc+11+ss:goto50260
+57120 print#1,16:print#1,247:pc=pc+12+ss:goto50260
 57200 gosub49320:vl=zl:vh=zh
 57210 gosub49100:ifch<>178then49200
 57220 x=peek(tp+1):ifx<65orx>90then57500
