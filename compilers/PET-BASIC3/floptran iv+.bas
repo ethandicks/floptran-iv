@@ -77,7 +77,7 @@
 51080 print#1,32:print#1,ml%(fu,0):print#1,ml%(fu,1):pc=pc+3
 51100 gosub59970:goto50240
 52000 a=0:ifpeek(tp+2)<>34then52020
-52010 gosub49130:print#1,169:print#1,ch:gosub59300:pc=pc+5:gosub49100:goto59000
+52010 gosub49130:print#1,169:print#1,ch:gosub59300:pc=pc+2:gosub49100:goto59000
 52020 zh=int((pc+7)/256):zl=(pc+7)-256*zh:tp=tp+1
 52030 print#1,169:print#1,zl:print#1,160:print#1,zh
 52040 print#1,24:print#1,144
@@ -210,7 +210,7 @@
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
 59100 print#1,32:print#1,28:print#1,202
 59160 print#1,32:print#1,205:print#1,253:pc=pc+9:goto59000
-59300 print#1,32:print#1,210:print#1,255:return
+59300 print#1,32:print#1,210:print#1,255:pc=pc+3:return
 59350 vb=ch-65:gosub49320
 59360 print#1,160:print#1,zh:print#1,169:print#1,zl
 59370 print#1,32:print#1,28:print#1,202:pc=pc+7:goto59000
@@ -226,7 +226,7 @@
 59700 print#1,195:print#1,169:print#1,16:print#1,133:print#1,31:print#1,169
 59720 print#1,2:print#1,133:print#1,32:print#1,202:print#1,138:print#1,32
 59740 print#1,143:print#1,214:gosub59980
-59780 pc=pc+41:goto59500
+59780 pc=pc+35:goto59500
 59900 print#1,162:print#1,4:print#1,189:print#1,wl:print#1,wh
 59910 print#1,157:print#1,vl:print#1,vh:print#1,202
 59920 print#1,16:print#1,247:pc=pc+11:return
