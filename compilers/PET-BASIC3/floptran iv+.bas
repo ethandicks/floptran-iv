@@ -75,8 +75,7 @@
 51040 gosub49100:gosub49190:gosub49400
 51060 gosub49100:ifch<>41then49200
 51080 print#1,32:print#1,ml%(fu,0):print#1,ml%(fu,1):pc=pc+3
-51100 print#1,162:print#1,vl:print#1,160:print#1,vh
-51120 print#1,32:print#1,224:print#1,218:pc=pc+7:goto50240
+51100 gosub59970:goto50240
 52000 a=0:ifpeek(tp+2)<>34then52020
 52010 gosub49130:print#1,169:print#1,ch:gosub59300:pc=pc+5:gosub49100:goto59000
 52020 zh=int((pc+7)/256):zl=(pc+7)-256*zh:tp=tp+1
@@ -226,14 +225,16 @@
 59680 print#1,224:print#1,1:print#1,208:print#1,3:print#1,76:print#1,137
 59700 print#1,195:print#1,169:print#1,16:print#1,133:print#1,31:print#1,169
 59720 print#1,2:print#1,133:print#1,32:print#1,202:print#1,138:print#1,32
-59740 print#1,143:print#1,214:print#1,162:print#1,zl:print#1,160:print#1,zh
-59760 print#1,32:print#1,224:print#1,218
-59780 pc=pc+48:goto59500
+59740 print#1,143:print#1,214:gosub59980
+59780 pc=pc+41:goto59500
 59900 print#1,162:print#1,4:print#1,189:print#1,wl:print#1,wh
 59910 print#1,157:print#1,vl:print#1,vh:print#1,202
 59920 print#1,16:print#1,247:pc=pc+11:return
 59950 print#1,169:print#1,255
 59960 print#1,69:print#1,99:print#1,133:print#1,99:pc=pc+6:return
+59970 zl=vl:zh=vh
+59980 print#1,162:print#1,zl:print#1,160:print#1,zh
+59985 print#1,32:print#1,224:print#1,218:pc=pc+7:return
 60000 print"{down}first pass finished":print"{down}program occupies"oc" through"pc-1
 60020 print"{down}variables occupy"ov" through"ov+129
 60060 print#1,-1:ifgc=0then61000
