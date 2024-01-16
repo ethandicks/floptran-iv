@@ -42,8 +42,9 @@ Language features added to 1980 published version:
       * A$=B$ *NEW*
       * TBD:
         * A=LEN(A$)
+        * A=ASC(A$)
         * A=VAL(A$)
-        * A$=STR(A)
+        * A$=STR$(A)
         * MID$/LEFT$/RIGHT$
     * POKE with constant or numeric variable arguments
     * PRINT of floating point variables refactored to use more in-ROM routines
