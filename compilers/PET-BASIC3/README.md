@@ -40,10 +40,10 @@ Language features added to 1980 published version:
       * A$=CHR$(A)
       * A$=B$+C$ (concatenation bug from 1982 fixed)
       * A$=B$ *NEW*
+      * A=LEN(A$) *NEW*
+      * A=VAL(A$) *NEW*
+      * A=ASC(A$) *NEW*
       * TBD:
-        * A=LEN(A$)
-        * A=ASC(A$)
-        * A=VAL(A$)
         * A$=STR$(A)
         * MID$/LEFT$/RIGHT$
     * POKE with constant or numeric variable arguments

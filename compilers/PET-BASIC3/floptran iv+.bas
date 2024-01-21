@@ -66,6 +66,7 @@
 50460 gosub49100:ifch=36thentp=tp-1:goto57200
 50470 ifch<>178then49200
 50480 gosub49100:if(ch>179)and(ch<195)then51000
+50490 if(ch>194)and(ch<199)then57900
 50500 ifch=171then55600
 50520 gosub49190:wl=zl:wh=zh
 50540 gosub49100:if(ch=0)or(ch=58)then58300
@@ -172,6 +173,18 @@
 57833 print#1,169:print#1,0:print#1,141:print#1,vl:print#1,vh:pc=pc+5
 57835 gosub49100:ifch<>41then49200
 57840 goto50240
+57900 tl=ch:gosub49100:ifch<>40then49200
+57910 gosub49310:on(tl-195)goto49200,57940,57960
+57920 print#1,160:print#1,255:print#1,200:print#1,185:print#1,zl:print#1,zh
+57930 print#1,208:print#1,250:pc=pc+8:goto57980
+57940 print#1,169:print#1,zl:print#1,133:print#1,119
+57945 print#1,169:print#1,zh:print#1,133:print#1,120
+57950 print#1,32:print#1,118:print#1,0
+57955 print#1,32:print#1,255:print#1,219:pc=pc+15:goto57990
+57960 print#1,172:print#1,zl:print#1,zh:pc=pc+3
+57980 print#1,32:print#1,124:print#1,210:pc=pc+3
+57990 gosub49440:gosub49100:ifch<>41then49200
+57995 goto50240
 58000 gosub49100:gosub49190:gosub49100:vl=tp+1:ifch=36thentp=tp-1:goto57000
 58020 ifch<>178then49200
 58080 gosub49100:if(ch<>58)and(ch<>0)then58080
