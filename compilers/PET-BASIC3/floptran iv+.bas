@@ -79,9 +79,7 @@
 50660 print#1,169:print#1,wl:print#1,160:print#1,wh:pc=pc+4
 50700 if (fu=15)or(fu=17)andnotw0then51080
 50720 print#1,32:print#1,152:print#1,217:pc=pc+3:goto51080
-51000 fu=ch-180:gosub49100:ifch<>40then49200
-51040 gosub49100:gosub49190:gosub49400
-51060 gosub49100:ifch<>41then49200
+51000 fu=ch-180:gosub49480
 51080 print#1,32:print#1,ml%(fu,0):print#1,ml%(fu,1):pc=pc+3
 51100 gosub49440:goto50240
 52000 a=0:ifpeek(tp+2)<>34then52020
@@ -126,11 +124,9 @@
 54030 goto59000
 54100 print#1,32:print#1,228:print#1,255:print#1,168:print#1,169:print#1,0
 54120 print#1,32:print#1,109:print#1,210:pc=pc+9:gosub49100:gosub49190:vh=zh:vl=zl:goto51100
-54200 gosub49100:ifch<>40then49200
-54205 gosub49100:gosub49190:gosub49400
+54200 gosub49480
 54210 print#1,32:print#1,210:print#1,214:print#1,165:print#1,17
-54220 print#1,32:print#1,210:print#1,255:pc=pc+8:gosub49100:ifch<>41then49200
-54230 goto59000
+54220 pc=pc+5:gosub59300:goto59000
 55600 gosub49100:gosub49190:gosub49400:gosub59950:goto51100
 56500 gosub49100:ifch=45thenprint#1,234:pc=pc+1:goto56500
 56510 ifch=0then50260
@@ -168,14 +164,11 @@
 57500 gosub49100
 57510 ifch=199then57800
 57520 goto49200
-57800 gosub49100:ifch<>40then49200
-57810 gosub49100:gosub49190
-57815 gosub49400
+57800 gosub49480
 57820 print#1,32:print#1,210:print#1,214:print#1,165:print#1,17
 57830 print#1,141:print#1,vl:print#1,vh:pc=pc+8
 57832 vl=(vl+1)and255:ifvl=0thenvh=vh+1
 57833 print#1,169:print#1,0:print#1,141:print#1,vl:print#1,vh:pc=pc+5
-57835 gosub49100:ifch<>41then49200
 57840 goto50240
 57900 tl=ch:gosub49100:ifch<>40then49200
 57910 gosub49310:on(tl-195)goto49200,57940,57960
