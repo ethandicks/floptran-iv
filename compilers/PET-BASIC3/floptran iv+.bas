@@ -127,6 +127,7 @@
 54200 gosub49480
 54210 print#1,32:print#1,210:print#1,214:print#1,165:print#1,17
 54220 pc=pc+5:gosub59300:goto59000
+54300 gosub49480:print#1,32:print#1,233:print#1,220:pc=pc+3:zl=0:zh=1:goto59360
 55600 gosub49100:gosub49190:gosub49400:gosub59950:goto51100
 56500 gosub49100:ifch=45thenprint#1,234:pc=pc+1:goto56500
 56510 ifch=0then50260
@@ -162,7 +163,10 @@
 57320 pc=pc+24:goto50240
 57500 gosub49100
 57510 ifch=199then57800
+57512 ifch=196then57700
 57520 goto49200
+57700 gosub49480:print#1,32:print#1,233:print#1,220:pc=pc+3:wl=0:wh=1
+57710 gosub49100:goto57270
 57800 gosub49480
 57820 print#1,32:print#1,210:print#1,214:print#1,165:print#1,17
 57830 print#1,141:print#1,vl:print#1,vh:pc=pc+8
@@ -218,6 +222,7 @@
 59050 ifch=34thengoto52000
 59060 if(ch=163)or(ch=166)then54000
 59070 ifch=199then54200
+59072 ifch=196then54300
 59075 ifpeek(tp+1)=36then59350
 59080 gosub49190:gosub49400:print#1,32:print#1,233:print#1,220
 59100 print#1,32:print#1,28:print#1,202
