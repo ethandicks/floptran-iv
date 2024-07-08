@@ -65,7 +65,7 @@
 50400 ifch=143then56500
 50420 ifch=142thenprint#1,96:pc=pc+1:goto50240
 50425 ifch=128thenprint#1,76:print#1,137:print#1,195:pc=pc+3:goto50240
-50430 ifch=144thenprint#1,0:goto50240
+50430 ifch=144thenprint#1,0:pc=pc+1:goto50240
 50440 gosub49190:vl=zl:vh=zh
 50460 gosub49100:ifch=36thentp=tp-1:goto57200
 50470 ifch<>178then49200
