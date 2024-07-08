@@ -1,0 +1,54 @@
+LABEL      1.0     2.0     4.0     VIC20   C64     COMMENT 
+LINWID     ----    000F    ----    ----    ----   Screen line width (set in INIT but never used)
+USRPOK     0000    0000    0000    0000    0310   $4C constant = JMP
+LINNUM     0008    0011    0011    0014    0014   Line # storage Lo/Hi
+INDEX      0071    001F    001F    0022    0022   Indirect index #1 - Lo/Hi
+INDEX_1    0072    0020    0020    0023    0023   Indirect index #1 - Hi
+FAC        00B0    005E    005E    0061    0061   Main floating-point accumulator (Mantissa - 5 bytes)
+FACMO      00B3    0061    0061    0064    0064   Middle order of mantissa
+FACLO      00B4    0062    0062    0065    0065   Least significant byte of mantissa
+FACSGN     00B5    0063    0063    0066    0066   Sign of FAC. = 0 or -1 when unpacked
+CHRGOT     00C8    0076    0076    0079    0079   Subroutine - regets current character from B. text
+TXTPTR     00C9    0077    0077    007A    007A   Pointer to current BASIC source text - Lo/Hi
+TXTPTR_1   00CA    0078    0078    007B    007B   Pointer to current BASIC source text - Hi
+TRMPOS     0005    00C6    00C6    0009    0009   Column of cursor on screen line
+BUF        000A    0210    0200    0200    0200   Input buffer - 81 bytes
+READY      C38B    C389    B3FF    C474    E386   Warm start of BASIC - NMI vector in 2.0 and 4.0
+STROUT     CA27    CA1C    BB1D    CB1E    AB1E   Output string address in Y and A - end with 00
+FRE        D264    D259    C4A8    D37D    B37D   FRE instruction
+GIVAYF     D278    D26D    C4BC    D391    B391   Converts integer to floating binary
+POS        D285    D27A    C4C9    D39E    B39E   POS instruction
+SNGFLT     D287    D27C    C4CB    D3A2    B3A2   Converts Y to floating binary
+VAL        D685    D687    C8E3    D7AD    B7AD   VAL instruction
+VAL_8      D68D    D68F    C8EB    D7B5    B7B5   VAL instruction+8 (not a documented entry point)
+GETADR     D6D0    D6D2    C92D    D7F7    B7F7   Convert "fac" to integer - place in "poker"
+PEEK       D6E6    D6E8    C943    D80D    B80D   PEEK instruction
+FSUB       D725    D733    C986    D850    B850   Move memory to "arg" and...
+FSUBT      D728    D736    C989    D853    B853   "-" instruction: fac=fac-arg
+FADD       D73C    D773    C99D    D867    B867   Move  memory to "arg" and...
+FADDT      D73F    D776    C9A0    D86A    B86A   "+" instruction: fac=fac+arg
+LOG        D8BF    D8F6    CB20    D9EA    B9EA   LOG instruction
+FMULT      D8FD    D934    CB5E    DA28    BA28   Multiply: "fac"="fac"*"arg"
+FMULT_8    D905    D93C    CB66    DA30    BA30   Alt FMULT call to skip CONUPK (1982 implementation) 
+CONUPK     D95E    D998    CBC2    DA8C    BA8C   Unpack memory into "arg"
+FDIVT      D9E4    DA1E    CC48    DB12    BB12   "/" instruction: "fac"="arg"/"fac"
+MOVFM      DA74    DAAE    CCD8    DBA2    BBA2   Move memory to "fac"
+MOVMF      DAA6    DAE0    CD0A    DBD4    BBD4   (Round off "fac" and) move "fac" to memory
+SGN        DB0B    DB45    CD6F    DC39    BC39   SGN instruction
+ABS        DB2A    DB64    CD8E    DC58    BC58   ABS instruction
+INT        DB9E    DBD8    CE02    DCCC    BCCC   INT instruction
+FIN        DBC5    DBFF    CE29    DCF3    BCF3   Convert input string to floating-pt. value in "fac"
+FOUT       DCAF    DCE9    CF93    DDDD    BDDD   Convert "fac" to string ending in 0, address in A & Y
+SQR        DE24    DE5E    D108    DF71    BF71   SQR instruction
+FPWRT      DE2E    DE68    D112    DF7B    BF7B   [up-arrow] instruction: "arg"**"fac"
+EXP        DEA0    DEDA    D184    DFED    BFED   EXP instruction (of "fac")
+RND        DF45    DF7F    D229    E094    E097   RND instruction
+COS        DF9E    DFD8    D282    E261    E264   COS instruction
+SIN        DFA5    DFDF    D289    E268    E26B   SIN instruction
+TAN        DFEE    E028    D2D2    E2B1    E2B4   TAN instruction
+ATN        E048    E08C    D32C    E30B    E30E   ATN instruction - uses "fac"
+SPACE      ----    FDCD    D531    ----    ----   Print 1 space
+CRLF       ----    FDD0    D534    ----    ----   Print return + line-feed
+GETIN      FFE4    FFE4    FFE4    FFE4    FFE4   SYS10 - Get a buffered character - uses A
+BASIN      FFCF    FFCF    FFCF    FFCF    FFCF   SYS8 - Input a byte from channel - uses A
+BSOUT      FFD2    FFD2    FFD2    FFD2    FFD2   SYS9 - Output a byte to channel - uses A
