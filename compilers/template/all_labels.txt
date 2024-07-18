@@ -1,4 +1,5 @@
 LABEL      1.0     2.0     4.0     VIC20   C64     COMMENT 
+INPSKP     ----    0002    0001    0001    0001   How many chars to skip at front of INPUT# items (loader)
 LINWID     ----    000F    ----    ----    ----   Screen line width (set in INIT but never used)
 USRPOK     0000    0000    0000    0000    0310   $4C constant = JMP
 LINNUM     0008    0011    0011    0014    0014   Line # storage Lo/Hi
