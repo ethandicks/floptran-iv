@@ -5,82 +5,75 @@
 
 # symbol table file format
 #
-# LABEL, BASIC1, BASIC3, BASIC4, VIC-20, C64,    C128,  COMMENT
-# ATN,   E048,   E08C,   0,      E30B,   C30B,   0,     ATN(P)
-# BASIN, FFCF,   FFCF,   FFCF,   FFCF,   FFCF,   FFCF,  X
+# LABEL      1.0     2.0     4.0     VIC20   C64     COMMENT
+# LINWID     ----    000F    ----    ----    ----   Screen line width (set in INIT but never used)
+# USRPOK     0000    0000    0000    0000    0310   $4C constant = JMP
+# LINNUM     0008    0011    0011    0014    0014   Line # storage Lo/Hi
+# INDEX      0071    001F    001F    0022    0022   Indirect index #1 - Lo/Hi
+# FAC        00B0    005E    005E    0061    0061   Main floating-point accumulator (Mantissa - 5 bytes)
+# FACMO      00B3    0061    0061    0064    0064   Middle order of mantissa
+#
 
-$symbols = "./table.txt";
-
+# BASIC listing format with symbols to be replaced
+#
+# Symbols are read in as 16-bit quantities and broken into
+# high (.h) and low (.l) bytes in decimal for substitution
+#
 #54100 print#1,32:print#1,{GETIN.l}:print#1,{GETIN.h}:print#1,168:print#1,169:print#1,0
 #59300 print#1,32:print#1,{BSOUT.l}:print#1,{BSOUT.h}:pc=pc+3:return
 #59600 print#1,162:print#1,0:print#1,32:print#1,{BASIN.l}:print#1,{BASIN.h}
 
-# BASIC3 values for testing (some values are slightly off in my 1982 code)
-#  (special notes: LINWID only exists in BASIC V2)
-@array = qw(
- USRPOK   0000
- LINWID   000F
- LINNUM   0011
- INDEX    001F
- INDEX_1  0020
- FAC      005E
- FACMO    0061
- FACLO    0062
- FACSGN   0063
- CHRGOT   0076
- TXTPTR   0077
- TXTPTR_1 0078
- TRMPOS   00C6
- BUF      0210
- READY    C389
- STROUT   CA1C
- FRE      D259
- GIVAYF   D26D
- POS      D27A
- SNGFLT   D27C
- PEEK     D6E8
- VAL      D687
- VAL_8    D68F
- GETADR   D6D2
- FADD     D773
- FADDT    D776
- FSUB     D733
- FSUBT    D736
- FMULT    D93C
- FDIVT    DA1E
- LOG      D8F6
- SGN      DB45
- ABS      DB64
- INT      DBD8
- CONUPK   D998
- MOVFM    DAAE
- MOVMF    DAE0
- FIN      DBFF
- FOUT     DCE9
- SQR      DE5E
- FPWRT    DE68
- EXP      DEDA
- RND      DF7F
- COS      DFD8
- SIN      DFDF
- TAN      E028
- ATN      E08C
- SPACE    FDCD
- CRLF     FDD0
- BASIN    FFCF
- BSOUT    FFD2
- GETIN    FFE4
-);
+# Just use a fixed symbol table for now, generated programmatically with some hand edits
+$symbols = "./all_labels.txt";
 
+# debug/quiet flag
+$quiet = 1;
+
+# grab the name of the symbol column we intend to match
+$column = shift @ARGV;
+
+# Provide debugging info if requested
+print stderr "Reading symbols from $symbols\n" unless $quiet;
+print stderr "Looking for symbols for '$column'\n" unless $quiet;
+
+# Open symbol file and pull in header line for column names
+open SFH, "<${symbols}";
+$header = <SFH>;
+chomp $header;
+
+print stderr "Header is '$header'\n" unless $quiet;
+
+# break down header line into list entities for searching and match against first arg
+@rom_options = split(/\s+/, $header);
+($index) = grep $rom_options[$_] eq $column, 0 .. $#rom_options;
+
+print stderr "Found it at pos $index\n" unless $quiet;
+
+# Ensure a valid column name was requested or exit with error
+die "Did not find '$column' in the symbol file\n" unless (defined($index) and $index);
+
+# read in remaining lines of symbol file and capture as list of alternating
+# symbol/matching address key/value pairs
+
+@array = ();
+
+foreach (<SFH>) {
+	push @array, (split(/\s+/))[0,$index]
+}
+
+close SFH;
+
+# Convert symbol list into hash
 %romwords = @array;
 
+# Create hash of high/low decimal byte values with X.h and X.l as keys
 %rombytes = {};
 
 foreach my $symbol (keys(%romwords)) {
 	my $addr = hex($romwords{$symbol});
 	my $hkey = $symbol . '.h';
 	my $lkey = $symbol . '.l';
-#	print "$symbol => $hkey / $lkey = $addr\n";
+	print stderr "$symbol => $hkey / $lkey = $addr\n" unless $quiet < 2;
 	$rombytes{$lkey} = $addr & 0xff;
 	$rombytes{$hkey} = $addr >> 8;
 }
@@ -88,7 +81,7 @@ foreach my $symbol (keys(%romwords)) {
 # Match and capture symbol names of the form 'ABCD[_n].h' and 'ABCD[_n].l'
 $regex = '{([A-Z0-9_]*\.[hl])}';
 
-# Run through template and subsitute each symbol with decimal value
+# Run through template program (via stdio) and subsitute each symbol with decimal value
 foreach (<>) {
 	s/$regex/$rombytes{$1}/g;
 	print;
