@@ -69,6 +69,10 @@ close SFH;
 # Create hash of high/low decimal byte values with X.h and X.l as keys
 %rombytes = {};
 
+# Inject specific symbols to prettify targets
+$varname = ($column =~ /^[0-9]/) ? "pet " . $column : $column;
+$rombytes{'VARIANT.l'} = lc($varname);
+
 foreach my $symbol (keys(%romwords)) {
 	my $addr = hex($romwords{$symbol});
 	my $hkey = $symbol . '.h';
