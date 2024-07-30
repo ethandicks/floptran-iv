@@ -227,12 +227,14 @@
 59075 ifpeek(tp+1)=36then59350
 59080 gosub49190:gosub49400:print#1,32:print#1,{FOUT.l}:print#1,{FOUT.h}
 59100 print#1,32:print#1,{STROUT.l}:print#1,{STROUT.h}
-59160 print#1,32:print#1,{SPACE.l}:print#1,{SPACE.h}:pc=pc+9:goto59000
+59160 print#1,32:print#1,{SPACE.l}:print#1,{SPACE.h}:pc=pc+9:goto59000:rem match 3.0 4.0
+59160 print#1,169:print#1,32:gosub59300:pc=pc+8:goto59000:rem match 1.0 VIC20 C64
 59300 print#1,32:print#1,{BSOUT.l}:print#1,{BSOUT.h}:pc=pc+3:return
 59350 vb=ch-65:gosub49320
 59360 print#1,160:print#1,zh:print#1,169:print#1,zl
 59370 print#1,32:print#1,{STROUT.l}:print#1,{STROUT.h}:pc=pc+7:goto59000
-59400 print#1,32:print#1,{CRLF.l}:print#1,{CRLF.h}:pc=pc+3:goto50260
+59400 print#1,32:print#1,{CRLF.l}:print#1,{CRLF.h}:pc=pc+3:goto50260:rem match 3.0 4.0
+59400 print#1,169:print#1,13:gosub59300:pc=pc+2:goto50260:rem match 1.0 VIC20 C64
 59500 gosub49100:if(ch=0)or(ch=58)then50260
 59540 if(ch=44)or(ch=59)then59500
 59560 gosub49190

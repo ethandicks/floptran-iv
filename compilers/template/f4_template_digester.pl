@@ -73,6 +73,7 @@ close SFH;
 $varname = ($column =~ /^[0-9]/) ? "pet " . $column : $column;
 $rombytes{'VARIANT.l'} = lc($varname);
 
+# Build hi-byte+lo-byte symbols/values from 16-bit symbols/values
 foreach my $symbol (keys(%romwords)) {
 	my $addr = hex($romwords{$symbol});
 	my $hkey = $symbol . '.h';
@@ -87,6 +88,15 @@ $regex = '{([A-Z0-9_]*\.[hl])}';
 
 # Run through template program (via stdio) and subsitute each symbol with decimal value
 foreach (<>) {
+	# skip line if it has a variant tag but doesn't match our ROMs
+	next if (/:rem match/) and !(/:rem match.*$column/);
+
+	# match on symbolic tags and replace with calculated values
 	s/$regex/$rombytes{$1}/g;
+
+	# remove all variant tags from output stream
+	s/:rem match.*$//;
+
+	# emit the literal line for the target machine
 	print;
 }
