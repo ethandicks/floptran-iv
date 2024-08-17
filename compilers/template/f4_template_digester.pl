@@ -71,7 +71,7 @@ close SFH;
 
 # Inject specific symbols to prettify targets
 $varname = ($column =~ /^[0-9]/) ? "pet " . $column : $column;
-$rombytes{'VARIANT.l'} = lc($varname);
+$rombytes{'VARIANT.x'} = lc($varname);
 
 # Build hi-byte+lo-byte symbols/values from 16-bit symbols/values
 foreach my $symbol (keys(%romwords)) {
@@ -84,7 +84,8 @@ foreach my $symbol (keys(%romwords)) {
 }
 
 # Match and capture symbol names of the form 'ABCD[_n].h' and 'ABCD[_n].l'
-$regex = '{([A-Z0-9_]*\.[hl])}';
+# as well as ABCD[_n].x for non-byte symbols.
+$regex = '{([A-Z0-9_]*\.[hlx])}';
 
 # Run through template program (via stdio) and subsitute each symbol with decimal value
 foreach (<>) {

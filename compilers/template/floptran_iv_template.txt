@@ -27,7 +27,7 @@
 49740 return
 50000 x=0:dimml%(19,1),vt%(25),sr%(25):p=1025:gc=0
 50002 w0= 0:rem old/new math method
-50020 print"floptran iv compiler for {VARIANT.l}":print
+50020 print"floptran iv compiler for {VARIANT.x}":print
 50040 l=peek(p+2)+256*peek(p+3):ifl<>49000thenp=peek(p)+256*peek(p+1):goto50040
 50100 xl=p+6:gosub49600:input"compiled file name";c$:open1,8,2,c$+",s,w"
 50120 print"origin for code? 16384{left}{left}{left}{left}{left}{left}{left}";:inputoc:print#1,oc:pc=oc
