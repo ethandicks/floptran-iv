@@ -25,16 +25,16 @@
 49720 forx=0to19:readml%(x,0),ml%(x,1):next
 49730 ifw0=0thenml%(15,0)=ml%(15,0)-3:ml%(17,0)=ml%(17,0)-8
 49740 return
-50000 x=0:dimml%(19,1),vt%(25),sr%(25):p=1025:gc=0
+50000 x=0:dimml%(19,1),vt%(25),sr%(25):p=peek({TXTTAB_1.l})*256+1:gc=0
 50002 w0= 0:rem old/new math method
 50020 print"floptran iv compiler for {VARIANT.x}":print
 50040 l=peek(p+2)+256*peek(p+3):ifl<>49000thenp=peek(p)+256*peek(p+1):goto50040
 50100 xl=p+6:gosub49600:input"compiled file name";c$:open1,8,2,c$+",s,w"
 50120 print"origin for code? 16384{left}{left}{left}{left}{left}{left}{left}";:inputoc:print#1,oc:pc=oc
-50140 print"variable table origin? 826{left}{left}{left}{left}{left}";:inputov:tp=1028
+50140 print"variable table origin? 826{left}{left}{left}{left}{left}";:inputov:tp=peek({TXTTAB_1.l})*256+4
 50141 print"max. string size  15{left}{left}{left}{left}";:inputss
 50145 x=ov:cn=ss:q=0:print"{down}variables used:";
-50150 li=peek(tp-1)+256*peek(tp):ifli=49000thentp=1028:oe=x:goto50190
+50150 li=peek(tp-1)+256*peek(tp):ifli=49000thentp=peek({TXTTAB_1.l})*256+4:oe=x:goto50190
 50160 gosub49100:ifch=0thentp=tp+4:goto50150
 50162 ifli<49000thenlm=li
 50163 ifch=145thengc=gc+10
@@ -192,7 +192,7 @@
 58100 iftp-vl>60thenprint"line too long error";:goto49210
 58120 forl=vltotp-1:wl=peek(l):pokexl+l-vl,wl:next
 58160 gosub49000:forl=vltotp-1:pokexl+l-vl,32:next
-58180 print#1,24:print#1,144:print#1,5:pc=pc+3:vl=256*peek(43)+peek(42)+2
+58180 print#1,24:print#1,144:print#1,5:pc=pc+3:vl=256*peek({VARTAB_1.l})+peek({VARTAB.l})+2
 58220 forl=vltovl+4:print#1,peek(l):next:wh=int(pc/256):wl=pc-256*wh
 58240 vl=zl:vh=zh:pc=pc+5
 58300 gosub59900:goto50260
