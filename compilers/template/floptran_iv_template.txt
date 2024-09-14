@@ -78,7 +78,7 @@
 50560 if(ch<170)or(ch>174)then49200
 50580 fu=ch-155:gosub49100:gosub49190:gosub49400
 50660 print#1,169:print#1,wl:print#1,160:print#1,wh:pc=pc+4
-50700 if (fu=15)or(fu=17)andnotw0then51080
+50700 if((fu=15)or(fu=17))andnotw0then51080
 50720 print#1,32:print#1,{CONUPK.l}:print#1,{CONUPK.h}:pc=pc+3:goto51080
 51000 fu=ch-180:gosub49480
 51080 print#1,32:print#1,ml%(fu,0):print#1,ml%(fu,1):pc=pc+3
