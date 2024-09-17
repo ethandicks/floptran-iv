@@ -37,8 +37,8 @@
 50150 li=peek(tp-1)+256*peek(tp):ifli=49000thentp=peek({TXTTAB_1.l})*256+4:oe=x:goto50190
 50160 gosub49100:ifch=0thentp=tp+4:rm=0:goto50150
 50162 ifli<49000thenlm=li
-50164 ifch=143thenrm=1
 50163 ifch=145thengc=gc+10
+50164 ifch=143thenrm=1
 50167 ifch=34thenq=1-q
 50168 ifch=137orch=141thengc=gc+1
 50170 ifch>90orch<65orq=1orrm=1then50160
