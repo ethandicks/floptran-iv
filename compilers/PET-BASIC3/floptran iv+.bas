@@ -25,21 +25,23 @@
 49720 forx=0to19:readml%(x,0),ml%(x,1):next
 49730 ifw0=0thenml%(15,0)=ml%(15,0)-3:ml%(17,0)=ml%(17,0)-8
 49740 return
-50000 x=0:dimml%(19,1),vt%(25),sr%(25):p=1025:gc=0
+50000 x=0:dimml%(19,1),vt%(25),sr%(25):p=peek(41)*256+1:gc=0
 50002 w0= 0:rem old/new math method
+50020 print"floptran iv compiler for pet 3.0":print
 50040 l=peek(p+2)+256*peek(p+3):ifl<>49000thenp=peek(p)+256*peek(p+1):goto50040
 50100 xl=p+6:gosub49600:input"compiled file name";c$:open1,8,2,c$+",s,w"
 50120 print"origin for code? 16384{left}{left}{left}{left}{left}{left}{left}";:inputoc:print#1,oc:pc=oc
-50140 print"variable table origin? 826{left}{left}{left}{left}{left}";:inputov:tp=1028
+50140 print"variable table origin? 826{left}{left}{left}{left}{left}";:inputov:tp=peek(41)*256+4
 50141 print"max. string size  15{left}{left}{left}{left}";:inputss
 50145 x=ov:cn=ss:q=0:print"{down}variables used:";
-50150 li=peek(tp-1)+256*peek(tp):ifli=49000thentp=1028:oe=x:goto50190
-50160 gosub49100:ifch=0thentp=tp+4:goto50150
+50150 li=peek(tp-1)+256*peek(tp):ifli=49000thentp=peek(41)*256+4:oe=x:goto50190
+50160 gosub49100:ifch=0thentp=tp+4:rm=0:goto50150
 50162 ifli<49000thenlm=li
+50164 ifch=143thenrm=1
 50163 ifch=145thengc=gc+10
 50167 ifch=34thenq=1-q
 50168 ifch=137orch=141thengc=gc+1
-50170 ifch>90orch<65orq=1then50160
+50170 ifch>90orch<65orq=1orrm=1then50160
 50172 ifpeek(tp+1)<>36then50178
 50173 tp=tp+1:ifsr%(ch-65)then50160
 50174 sr%(ch-65)=cn:cn=cn+ss+1:printchr$(ch)"$";:goto50160
@@ -77,7 +79,7 @@
 50560 if(ch<170)or(ch>174)then49200
 50580 fu=ch-155:gosub49100:gosub49190:gosub49400
 50660 print#1,169:print#1,wl:print#1,160:print#1,wh:pc=pc+4
-50700 if (fu=15)or(fu=17)andnotw0then51080
+50700 if((fu=15)or(fu=17))andnotw0then51080
 50720 print#1,32:print#1,152:print#1,217:pc=pc+3:goto51080
 51000 fu=ch-180:gosub49480
 51080 print#1,32:print#1,ml%(fu,0):print#1,ml%(fu,1):pc=pc+3
@@ -257,7 +259,7 @@
 60120 zh=int(z/256):zl=z-256*zh:print#1,zl:print#1,zh:next
 61000 print#1,-1:close1:stop
 63000 rem attached loader
-63005 if c$=""theninput"file name";c$
+63005 ifc$=""theninput"file name";c$
 63010 open1,8,2,c$+",s,r":input#1,a$:pc=val(a$):print"begin at "pc:p0=pc
 63012 ifpc=0thenprint"?bad read, st=";st:close1:end
 63015 ifpc<16384thenpc=pc+16384
