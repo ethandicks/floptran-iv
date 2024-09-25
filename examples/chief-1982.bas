@@ -1,4 +1,3 @@
-0 rem 0d 04 0a 00 9e 28 31 30 33 39 29 00 00 00
 3 let a=15
 4 print "{clr}";
 5 print tab(a);
