@@ -3,6 +3,7 @@
   * poketest.bas - example to test POKE with different types of arguments (which generate different binary code streams)
   * chemist-1982.bas - reconstructed FLOPTRAN source for 1982 version of CHEMIST (uses POKE, IF NOT and expanded PRINT)
   * chemist.bas - tidier version of CHEMIST with updates to use expanded IF features and REM BASIC start code
+  * chief-1982.bas - reconstructed FLOPTRAN source for 1982 version of CHIEF (uses POKE, IF NOT, expanded PRINT, CHR$, and GET)
   * sine wave.bas - reconstructed FLOPTRAN source for 1982 version of SINE WAVE (uses POKE, expanded IF and expanded PRINT)
   * victest1.bas - test program for Heitronic compiler for VIC-20
   * victest1.dat - object file output from Heitronic compiler for VIC-20
@@ -16,3 +17,5 @@ sine wave.bas uses POKE to play sounds on a speaker hooked up to User Port CB2 p
 sine wave.bas uses constants for a 40 column screen.  These constants should be adjusted for an 8032.
 
 chemist has specially crafted print strings that wrap around on a 40 column screen.  These print statements should be edited for an 8032. 
+
+chief depends on the FLOPTRAN implementation of GET that does not work the same way as CBM BASIC (returns ASCII value for keypress).  Its yes/no subroutine also uses a POKE to manipulate the length of the keyboard queue with a value that works for PET BASIC 3.0 only and would have to be changed to the correct zero page for the target machine.
