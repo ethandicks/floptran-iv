@@ -32,6 +32,7 @@ Language features added to 1980 published version:
       * 0/$0000 for loading offset (to POKE binaries to hi-mem to later move down to 1039/$040F)
     * Integrated floptran dloader after compilation (CONT to load after compile)
     * Integrated binary writer after loader/dloader (CONT to write to disk after previous dloader)
+    * Max line number for GOTO/GOSUB is 999 (was 255 due to array limitations in original ROMs)
     * String variables *NEW*
       * Fixed-allocation string storage space begins after numeric variable storage
       * Max string length set in initial dialog
