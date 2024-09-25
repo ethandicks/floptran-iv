@@ -52,7 +52,7 @@
 50192 next
 50193 print:print"{down}  first pass finished{down}":dimln%(lm):ifgc>0thendimg%(gc-1,1):gc=0
 50194 forx=0tolm:ln%(x)=-32767:next
-50200 li=peek(tp-1)+256*peek(tp):ifli>255then60000
+50200 li=peek(tp-1)+256*peek(tp):ifli>999then60000
 50220 ln%(li)=pc-32767:print"compiling line"li"{up}"
 50240 gosub49100
 50260 ifch=0thentp=tp+4:goto50200
