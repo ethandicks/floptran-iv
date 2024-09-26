@@ -32,6 +32,7 @@ FSUB       D725    D733    C986    D850    B850   Move memory to "arg" and...
 FSUBT      D728    D736    C989    D853    B853   "-" instruction: fac=fac-arg
 FADD       D73C    D773    C99D    D867    B867   Move  memory to "arg" and...
 FADDT      D73F    D776    C9A0    D86A    B86A   "+" instruction: fac=fac+arg
+FONE       D891    D8C8    CAF2    D9BC    B9BC   Floating-point-binary constant: 1
 LOG        D8BF    D8F6    CB20    D9EA    B9EA   LOG instruction
 FMULT      D8FD    D934    CB5E    DA28    BA28   Multiply: "fac"="fac"*"arg"
 FMULT_8    D905    D93C    CB66    DA30    BA30   Alt FMULT call to skip CONUPK (1982 implementation) 
