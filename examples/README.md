@@ -5,6 +5,7 @@
   * chemist.bas - tidier version of CHEMIST with updates to use expanded IF features and REM BASIC start code
   * chief-1982.bas - reconstructed FLOPTRAN source for 1982 version of CHIEF (uses POKE, IF NOT, expanded PRINT, CHR$, and GET)
   * sine wave.bas - reconstructed FLOPTRAN source for 1982 version of SINE WAVE (uses POKE, expanded IF and expanded PRINT)
+  * boga2-1982.bas - reconstructed FLOPTRAN source for 1982 version of BOGA ][ (uses expanded IF and expanded PRINT and has large line numbers)
   * victest1.bas - test program for Heitronic compiler for VIC-20
   * victest1.dat - object file output from Heitronic compiler for VIC-20
   * victest1.lst - listing file from Heitronic compiler for VIC-20
