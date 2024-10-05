@@ -3,6 +3,7 @@
   * poketest.bas - example to test POKE with different types of arguments (which generate different binary code streams)
   * chemist-1982.bas - reconstructed FLOPTRAN source for 1982 version of CHEMIST (uses POKE, IF NOT and expanded PRINT)
   * chemist.bas - tidier version of CHEMIST with updates to use expanded IF features and REM BASIC start code
+  * chief.bas - updated FLOPTRAN source of CHIEF with improved text formatting (uses POKE, IF NOT, expanded PRINT, CHR$, and GET)
   * chief-1982.bas - reconstructed FLOPTRAN source for 1982 version of CHIEF (uses POKE, IF NOT, expanded PRINT, CHR$, and GET)
   * sine wave.bas - reconstructed FLOPTRAN source for 1982 version of SINE WAVE (uses POKE, expanded IF and expanded PRINT)
   * boga2-1982.bas - reconstructed FLOPTRAN source for 1982 version of BOGA ][ (uses expanded IF and expanded PRINT and has large line numbers)
