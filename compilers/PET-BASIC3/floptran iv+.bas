@@ -260,16 +260,15 @@
 61000 print#1,-1:close1:stop
 63000 rem attached loader
 63005 ifc$=""theninput"file name";c$
-63010 open1,8,2,c$+",s,r":input#1,a$:pc=val(a$):print"begin at "pc:p0=pc
+63010 open1,8,2,c$+",s,r":input#1,pc:print"begin at "pc:p0=pc
 63012 ifpc=0thenprint"?bad read, st=";st:close1:end
 63015 ifpc<16384thenpc=pc+16384
 63017 p1=pc
-63020 input#1,a$:a=val(mid$(a$,2)):ifa>=0thenpokepc,a:pc=pc+1:goto63020
+63020 get#1,a$:input#1,a:ifa>=0thenpokepc,a:pc=pc+1:goto63020
 63030 print"end at"pc-1:p2=pc-1
-63040 input#1,a$:pc=val(mid$(a$,2)):ifpc<0thenclose1:goto63399
+63040 get#1,a$:input#1,pc:ifpc<0thenclose1:goto63399
 63045 ifpc<16384thenpc=pc+16384
-63050 input#1,a$:pokepc,val(mid$(a$,2))
-63060 input#1,a$:pokepc+1,val(mid$(a$,2)):goto63040
+63050 get#1,a$:input#1,a:pokepc,a:get#1,a$:input#1,a:pokepc+1,a:goto63040
 63399 end
 63400 rem attached writer
 63410 open2,9,2,"cc.prg,p,w"
