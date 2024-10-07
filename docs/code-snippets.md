@@ -3,7 +3,6 @@
 Examples of what Floptran code translates to 6502 machine code
 
 ## LET
-
 The Floptran compiler uses the BASIC formula evaluator to convert whatever expression into a simple floating-point value which is copied into the output stream as a constant.  A simple loop copies the constant into a pre-determined variable slot (in order of declaration in the Floptran source).
 
 ```
@@ -21,7 +20,6 @@ The Floptran compiler uses the BASIC formula evaluator to convert whatever expre
 ```
 
 ## Assignment
-
 To copy one variable to another it's just a quick copy look from one fixed place in the variable list to another (position determined by order of declaration in the Floptran source)
 
 ```
@@ -32,6 +30,7 @@ To copy one variable to another it's just a quick copy look from one fixed place
 4005  9D 44 03    STA $0344,X
 4008  CA          DEX
 4009  10 F7       BPL $4002
+```
 
 ## Monadic operator
 
@@ -87,9 +86,9 @@ To copy one variable to another it's just a quick copy look from one fixed place
 
 
 ```
-The original Floptran compiler didn't offer END.  Jumping to the BASIC Warm Start vector seemed to be the obvious way to implement this.
 
 ## END
+The original Floptran compiler didn't offer END.  Jumping to the BASIC Warm Start vector seemed to be the obvious way to implement this.
 
 ```
 10 END
@@ -116,7 +115,6 @@ The original Floptran compiler offered RETURN to both return from a subroutine a
 ```
 
 ## REM (original use)
-
 The original use of REM in Floptran was just like BASIC - adding comments.  No output bytes were generated
 
 ```
