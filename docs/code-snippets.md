@@ -197,7 +197,7 @@ The original Floptran compiler offered RETURN to both return from a subroutine a
 ```
 
 ## REM (original use)
-The original use of REM in Floptran was just like BASIC - adding comments.  No output bytes were generated
+The original use of REM in Floptran was just like BASIC - adding comments.  No output bytes were generated.
 
 ```
 10 REM this is a remark and nothing more
@@ -207,7 +207,21 @@ The original use of REM in Floptran was just like BASIC - adding comments.  No o
 ```
 
 ## REM (NOP injector)
+A recent expansion of REM was to scan for '-' characters and insert a NOP for each one found.  It's handy for blocking out sections of compiled code or for inserting placeholders.
+
+```
+10 REM ---
+
+4000  EA          NOP
+4001  EA          NOP
+4002  EA          NOP
+```
 
 ## REM (hex byte injector)
+One of the newest additions to Floptran is scanning REM statements for hex charaters and inserting them as literal bytes in the output code.  This is especially handy for prepending a BASIC call to start the code, e.g. "SYS(1039)".  The parser for this feature can be fooled with false positives, so if you use REM statements solely for the original purpose of REMarks, it is important to watch for accentally injecting random bytes into your target code.
 
+```
+10 REM AA BB CC
 
+4000  AA BB CC    .BYTE $AA, $BB, $CC
+```
