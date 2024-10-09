@@ -16,7 +16,6 @@ The Floptran compiler uses the BASIC formula evaluator to convert whatever expre
 400D  9D 3A 03    STA $033A,X
 4010  CA          DEX
 4011  10 F7       BPL $400A
-
 ```
 
 ## Assignment
@@ -34,6 +33,8 @@ To copy one variable to another it's just a quick copy look from one fixed place
 
 ## Monadic operator
 
+The full list is SGN, INT, ABS, USR, FRE, POS, SQR, RND, LOG, EXP, COS, SIN, TAN, ATN, and PEEK (CBM BASIC tokens 180-194) and unary minus (171 but without a preceeding argument)
+
 ```
 10 A=-B
 20 A=RND(B)
@@ -47,6 +48,11 @@ To copy one variable to another it's just a quick copy look from one fixed place
 10 A=B+C
 
 ```
+
+## Special variables '0', '1', and 'pi' (recently added)
+In late 2024, after plenty of reverse engineering of compiled binaries from the early 80s, one pattern quickly emerged - the need for dedicating a variable to 1, for the original IF construct, and frequently to 0, for ending countdown loops.  With the expanded implementation of IF to include greater-than and less-than comparisons that already referenced the floating-point value of 1 embedded in BASIC (at FHALF), it seemed logical to also use ZERO and add a quick check where Floptran resolves variable names to addresses and inject the addresses of those constants.  Less frequently used, but trivial to implement, was pointing at PIVAL for the floating-point value of pi.
+
+These special variables don't change any of the operational code for any Floptran statements, they just get copied to one of the FACs like any Floptran variable rather than being copied from an indexed point in the variable table and no longer require a statement like 'LET Z=0' to take up over a dozen bytes.  As such, they can be used anywhere a floating point variable can be read (situations where they cannot appear include the left side of an assignment, or the target of INPUT or GET).
 
 ## GOTO
 Implemented in the original version, GOTO just uses a 6502 JMP instruction to jump to the address of the compiled line of target code (tracked via an array populated by the compiler and poked over top of the code during the second pass).
@@ -73,7 +79,6 @@ The original IF implementation allowed just for the checking of a variable again
 4003  F0 03       BEQ $4008   ; BNE for "IF NOT"
 4005  4C 0D 40    JMP $400D
 4008
-
 ```
 
 ## IF equal
@@ -114,13 +119,58 @@ In the original BYTE article, there was a technique provided for comparing two v
 401F
 ```
 
+## PRINT
+
+## INPUT
+The original Floptran provided for numeric input.  The routine prints the "?" prompt and uses the usual Kernal routines to read in the user's number one character at a time, then converts it to a floating-point value and copies it to the correct variable slot.  One enhancement is to treat an empty input the same as CBM BASIC and return to the BASIC prompt (via the BASIC Warm Start vector).
+
+```
+10 INPUT A
+
+4000  A9 3F       LDA #$3F    ; Print the "?" prompt
+4002  20 D2 FF    JSR $FFD2   ; BSOUT - print char in A
+4005  A2 00       LDX #$00
+4007  20 CF FF    JSR $FFCF   ; BASIN - input char in A
+400a  9D 10 02    STA $0210,X ; Store char in input buffer
+400d  E8          INX
+400e  C9 0D       CMP #$0D    ; Check for end of string
+4010  D0 F5       BNE $4007
+4012  20 D2 FF    JSR $FFD2   ; BSOUT - print the CR
+4015  E0 01       CPX #$01    ; Check if string is 1 char (just RETURN)
+4017  D0 03       BNE $401C
+4019  4C 89 C3    JMP $C389   ; READY - jump out to BASIC warm start
+401c  A9 10       LDA #$10    ; Point INDEX at input buffer
+401e  85 1F       STA $1F
+4020  A9 02       LDA #$02
+4022  85 20       STA $20
+4024  CA          DEX         ; Don't include terminator char
+4025  8A          TXA         ; Get string length in A
+4026  20 8F D6    JSR $D68F   ; VAL+8 call to convert string to floating point
+4029  A2 3A       LDX #$3A    ; Get address of variable A in X/Y
+402b  A0 03       LDY #$03
+402d  20 E0 DA    JSR $DAE0   ; MOVMF - Copy primary FAC to memory
+```
+
+## GET
+Taking single-character input from the user was not originally implemented.  It is handy for games so was added in a simple fashion that is not directly compatible with CBM BASIC.  As it currently exists, it uses the Kernal routine to grab the character then converts it to a floating point value and stores it in a variable.
+
+```
+4000  20 E4 FF    JSR $FFE4   ; GETIN - get character
+4003  A8          TAY
+4004  A9 00       LDA #$00    ; Clear high byte (could call SNGFLT instead)
+4006  20 6D D2    JSR $D26D   ; GIVAYF - convert integer in A/Y to floating-point
+4009  A2 3A       LDX #$3A    ; Get address of variable A in X/Y
+400b  A0 03       LDY #$03
+400d  20 E0 DA    JSR $DAE0   ; MOVMF - Copy primary FAC to memory
+```
+
 ## POKE
 Added in the expanded version of Floptran, POKE is useful on PETs for changing to lower case and for implementing CB2 music and sound effects, and on later machines for changing screen and border colors.  For code efficiency, the compiler logic for POKE looks for constants or variables in either address or value arguments to choose one of four different blocks of code.
 
 ```
 10 POKE 59468,12
 
-4000  A9 0C       LDA #$0C   ; Constant value stored in constant address
+4000  A9 0C       LDA #$0C   ; Constant value written to constant address
 4002  8D 4C E8    STA $E84C
 ```
 
