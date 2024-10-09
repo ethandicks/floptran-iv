@@ -3,6 +3,9 @@
 49120 return
 49130 tp=tp+1:ch=peek(tp):return
 49190 if(ch>64)and(ch<91)then49300
+49192 ifch=48thenz=0:zh=222:zl=31:return
+49194 ifch=49thenz=0:zh=216:zl=200:return
+49196 ifch=255thenz=0:zh=205:zl=163:return
 49200 print"{down}{down}{down}?syntax error";
 49210 print" in"li"{up}":goto61000
 49300 vb=ch-65:z=vt%(vb):zh=int(z/256):zl=z-256*zh:return

@@ -20,6 +20,8 @@ TRMPOS     0005    00C6    00C6    0009    0009   Column of cursor on screen lin
 BUF        000A    0210    0200    0200    0200   Input buffer - 81 bytes
 READY      C38B    C389    B3FF    C474    E386   Warm start of BASIC - NMI vector in 2.0 and 4.0
 STROUT     CA27    CA1C    BB1D    CB1E    AB1E   Output string address in Y and A - end with 00
+PIVAL      CDBC    CDA3    BEA0    CEA8    AEA8   Floating-point-binary constant: pi
+ZERO       D01A    DE1F    D0C9    DF13    BF13   Floating-point-binary constant: 0
 FRE        D264    D259    C4A8    D37D    B37D   FRE instruction
 GIVAYF     D278    D26D    C4BC    D391    B391   Converts integer to floating binary
 POS        D285    D27A    C4C9    D39E    B39E   POS instruction
