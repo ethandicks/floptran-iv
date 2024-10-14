@@ -11,7 +11,7 @@
 42 c=b-o:rem ---
 43 d=c/a:rem ---
 44 e=a^b:rem ---
-45 print "test +, -, *, /"
+45 print "test +, -, *, /, ^"
 46 print "a=";o;"+";o;"b=";a;"*";a;"c=";b;"-";o;"d=";c;"/";a;"e=";a;"^";b
 47 print "a=";a;"b=";b;"c=";c;"d=";d:rem ---
 255 end
