@@ -1,5 +1,6 @@
 # Examples
   * risk-odds.bas - example program given in original article
+  * featuretest.bas - example usage of statements to test code generation
   * poketest.bas - example to test POKE with different types of arguments (which generate different binary code streams)
   * chemist-1982.bas - reconstructed FLOPTRAN source for 1982 version of CHEMIST (uses POKE, IF NOT and expanded PRINT)
   * chemist.bas - tidier version of CHEMIST with updates to use expanded IF features and REM BASIC start code
