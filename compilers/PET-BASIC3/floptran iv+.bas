@@ -30,6 +30,7 @@
 49740 return
 50000 x=0:dimml%(19,1),vt%(25),sr%(25):p=peek(41)*256+1:gc=0
 50002 w0= 0:rem old/new math method
+50004 deffnx(x)=(x<48)or(x>70)or(x>57andx<65):deffnd(x)=(x-48)+7*(x>64)
 50020 print"floptran iv compiler for pet 3.0":print
 50040 l=peek(p+2)+256*peek(p+3):ifl<>49000thenp=peek(p)+256*peek(p+1):goto50040
 50100 xl=p+6:gosub49600:input"compiled file name";c$:open1,8,2,c$+",s,w"
@@ -136,10 +137,10 @@
 55600 gosub49100:gosub49190:gosub49400:gosub59950:goto51100
 56500 gosub49100:ifch=45thenprint#1,234:pc=pc+1:goto56500
 56510 ifch=0then50260
-56520 if(ch<48)or(ch>70)or(ch>57andch<65)then56500
-56530 x=(ch-48)+7*(ch>64):gosub49100:ifch=0then49200
-56540 if(ch<48)or(ch>70)or(ch>57andch<65)then49200
-56550 x=x*16+(ch-48)+7*(ch>64):print#1,x:pc=pc+1:goto56500
+56520 iffnx(ch)then56500
+56530 x=fnd(ch):gosub49100:ifch=0then49200
+56540 iffnx(ch)then49200
+56550 x=x*16+fnd(ch):print#1,x:pc=pc+1:goto56500
 57000 gosub49320
 57010 gosub49100:ifch<>178then49200
 57020 gosub49100:ifch<>34then49200
