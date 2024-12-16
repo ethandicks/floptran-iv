@@ -47,6 +47,7 @@ Language features added to 1980 published version:
       * A$=STR$(A) *NEW*
       * TBD:
         * MID$/LEFT$/RIGHT$
+    * Special arguments '0', '1', and '(pi)' can be used in place of standard a-z floating point variables (values pulled from ROM at runtime) *NEW*
     * POKE with constant or numeric variable arguments
     * PRINT of floating point variables refactored to use more in-ROM routines
     * PRINT supports more formats than just floating point variable output
@@ -59,7 +60,7 @@ Language features added to 1980 published version:
       * PRINT CHR$(A) (print character value 'A') *NEW*
       * PRINT STR$(A) (print A as numeric string with formatting) *NEW*
       * PRINT A$ (print string variable A$) *NEW*
-    * REM now adds one NOP ($EA) for each '-' and accepts hex digit pairs to emit raw bytes. Other chars are ignored *NEW*
+    * REM now adds one NOP ($EA) for each '-' and accepts hex digit pairs (after a single '$') to emit raw bytes. Other chars are ignored *NEW*
     * IF now supports multiple expression types (not just "IF A GOTO/GOSUB")
       * IF A GOTO (same as before)
       * IF NOT A GOTO (NOT inverts the sense of the test, it is not a logical operation) *NEW*
