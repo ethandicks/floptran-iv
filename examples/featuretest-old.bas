@@ -1,4 +1,4 @@
-0 rem $ 0d 04 0a 00 9e 28 31 30 33 39 29 00 00 00
+0 rem 0d 04 0a 00 9e 28 31 30 33 39 29 00 00 00
 1 rem --- test rem noop dash and direct hex output
 10 rem floptran-iv+ test suite for pet
 20 let z=0:rem --- test let and dynamic variable table
@@ -6,25 +6,25 @@
 30 print "{clr}":rem --- test print single char 
 31 print "{home}";:rem --- test semicolon no crlf
 32 print "floptran iv+ feature test{down}":rem ---
-40 a=o+o:rem --- test +
-41 b=a*a:rem --- test *
-42 c=b-o:rem --- test -
-43 d=c/a:rem --- test /
-44 e=a^b:rem --- test ^
+40 a=o+o:rem ---
+41 b=a*a:rem ---
+42 c=b-o:rem ---
+43 d=c/a:rem ---
+44 e=a^b:rem ---
 45 print "test +, -, *, /, ^"
-46 print "a=";o;"+";o;"b=";a;"*";a;"c=";b;"-";o;"d=";c;"/";a
-47 print "e=";a;"^";b"a=";a;"b=";b;"c=";c;"d=";d;"e=";e:rem ---
+46 print "a=";o;"+";o;"b=";a;"*";a;"c=";b;"-";o;"d=";c;"/";a;"e=";a;"^";b
+47 print "a=";a;"b=";b;"c=";c;"d=";d:rem ---
 50 f=sgn(a):rem ---
 51 g=int(d):rem ---
 52 h=abs(a):rem ---
-53 rem no test of usr()
-54 i=fre(0):rem --- test 0 as special arg
+53 rem
+54 i=fre(0):rem ---
 55 j=pos(0):rem ---
 56 k=sqr(b):rem ---
 57 l=rnd(0):rem ---
 57 m=log(a):rem ---
 58 n=exp(m):rem ---
-59 o=cos(~):rem --- test ~ as special arg
+59 o=cos(~):rem ---
 60 p=sin(~):rem ---
 61 r=tan(~):rem ---
 62 s=atn(~):rem ---
