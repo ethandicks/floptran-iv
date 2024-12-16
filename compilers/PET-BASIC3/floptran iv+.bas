@@ -137,10 +137,13 @@
 55600 gosub49100:gosub49190:gosub49400:gosub59950:goto51100
 56500 gosub49100:ifch=45thenprint#1,234:pc=pc+1:goto56500
 56510 ifch=0then50260
-56520 iffnx(ch)then56500
+56512 ifch=36then56520
+56514 gosub49100:ifch>0goto56514
+56516 goto50260
+56520 gosub49100:iffnx(ch)then50260
 56530 x=fnd(ch):gosub49100:ifch=0then49200
 56540 iffnx(ch)then49200
-56550 x=x*16+fnd(ch):print#1,x:pc=pc+1:goto56500
+56550 x=x*16+fnd(ch):print#1,x:pc=pc+1:goto56520
 57000 gosub49320
 57010 gosub49100:ifch<>178then49200
 57020 gosub49100:ifch<>34then49200
